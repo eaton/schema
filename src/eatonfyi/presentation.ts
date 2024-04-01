@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CreativeWorkSchema } from "../schema-org/creative-work.js";
+import { CreativeWorkSchema } from "../schema-org/creative-work/index.js";
 
 export const PresentationSchema = CreativeWorkSchema.extend({
   type: z.literal('presentation').default('presentation'),

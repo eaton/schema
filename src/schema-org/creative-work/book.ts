@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { reference, DimensionsSchema, oneOrMore } from '../util.js';
-import { OrganizationSchema } from './organization.js';
-import { CreativeWorkSchema } from './creative-work.js';
-import { PersonSchema } from './person.js';
+import { reference, DimensionsSchema, oneOrMore } from '../../util.js';
+import { OrganizationSchema } from '../organization.js';
+import { CreativeWorkSchema } from './index.js';
+import { PersonSchema } from '../person.js';
 
 // A book's title is stored in the 'name' property, via Thing/CreativeWork.
 // Books' "creators" are handled by the ParticipantSchema relationships.

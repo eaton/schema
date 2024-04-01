@@ -3,6 +3,7 @@ import { ThingSchema } from "./thing.js";
 import { reference, oneOrMore, oneOrDict } from '../util.js';
 
 // See https://schema.org/Place for details.
+// The 'parent' property corresponds to the 'containedInPlace' Schema.org property.
 
 export const PlaceSchema = ThingSchema.extend({
   type: z.literal('place').default('place'),

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CreativeWorkSchema } from './creative-work.js';
+import { CreativeWorkSchema } from './index.js';
 
 // Schema.org's "duration" property will be mapped from
 // the base 'timeRequired' property of 'CreativeWork'

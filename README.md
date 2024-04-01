@@ -1,18 +1,15 @@
 # EatonFYI Data Schema
 
-At a high level, I'm building a big pile of stuff that can cross-link to itself. No good reason, I just like the graphiness of it. Events, People, books and movies, organiations, and so on each get entries in the graph that can be referred to by an internal URN — same with my own content.
+At a high level, I'm building a big pile of stuff that can cross-link to itself. No good reason, I just like the graphiness of it. Events, people, books and movies, organiations, blogs, places, quotations, and so on each get entries in the graph that can be referred to by an internal URN — same with my own content.
 
-My own content consists of a handful of types:
+I've also added a few custom types on top of those to handle my own needs, in some cases redefining Schema.org types..
 
-- Project (something I worked on, either for my own purposes or for an employer)
-- Appearance (an article, podcast, etc that I appeared on)
-- Presentation (A talk/presentation I delivered. Some just be metadata, others will have full slides, transcripts, etc.)
-- Reprint (An article I wrote somewhere else, and am)
-- Post (A vanilla social media or blog post; might turn this into 'ephemera' or something along those lines)
-- Note (A piece of content that annotates, explains, or discusses something else)
-- ShortStory (Fiction, there's some of that)
+- CreativeWork/Project (in Schema.org language, this is a kind of organization. For me, it's a CreativeWork optionally for a particular employer.)
+- CreativeWork/Presentation (A talk/presentation I delivered. Some are just metadata, others will have full slides, transcripts, etc.)
+- CreativeWork/Reprint (An article I wrote somewhere else, and am)
+- CreativeWork/Note (A short piece of writing usually meant to give a personal status update, or share thoughts about some other item.)
 - Media (A video, photo, image post, etc that I created and posted as a distinct entity rather than a support asset for something else)
-- Link (A shared link)
+- SocialMediaPosting (A shared link)
 - Quotation (A saved quotation)
 
 Other types may be added, and "subtypes" for these might be necessary to keep things tidy. Project in particular might require a subtype to describe the kind of thing *that was created* as part of the project. Might also need some kind of thing to represent ephemera. All the other types (Thing, Person, Event, Organization, Place, CreativeWork, Book, Movie, etc) are just things that *can be mentioned* in my own posts.
@@ -93,6 +90,13 @@ classDiagram
     }
     CreativeWork <|-- Article : Is A
 
+    class Episode {
+        number episodeNumber
+        Identifier~CreativeWork~ season
+        Identifier~CreativeWork~ series
+    }
+    CreativeWork <|-- Episode : Is A
+
     class Book {
         string subtitle
         string format
@@ -105,13 +109,6 @@ classDiagram
         dimensions dimensions
     }
     CreativeWork <|-- Book : Is A
-
-    class Episode {
-        number episodeNumber
-        Identifier~CreativeWork~ season
-        Identifier~CreativeWork~ series
-    }
-    CreativeWork <|-- Episode : Is A
 
     class Movie {
         number duration
@@ -130,11 +127,6 @@ classDiagram
 
     }
     CreativeWork <|-- Note : Is A
-
-    class Post {
-
-    }
-    CreativeWork <|-- Post : Is A
 
     class Presentation {
 

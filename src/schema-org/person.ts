@@ -29,18 +29,12 @@ import { oneOrDict, reference } from '../util.js';
 
 export const PersonSchema = ThingSchema.extend({
   type: z.literal('person').default('person'),
-  fictional: z.boolean().optional(),
+  date: oneOrDict(z.date()).optional(),
   familyName: z.string().optional(),
   givenName: z.string().optional(),
   honorificPrefix: z.string().optional(),
   honorificSuffix: z.string().optional(),
-  email: z.string().email().optional(),
-  netWorth: z.number().optional(),
-  date: oneOrDict(z.date()).optional()
+  fictional: z.boolean().optional(),
 });
 export type Person = z.infer<typeof PersonSchema>;
 
-export const Persona = ThingSchema.extend({
-  person: reference(PersonSchema),
-});
-export type Persona = z.infer<typeof PersonSchema>;
