@@ -37,13 +37,15 @@ export const CreativeWorkSchema = ThingSchema.extend({
   archivedAt: z.string().url().optional(),
   keywords: oneOrMore(reference(ThingSchema)).optional(),
 
+  status: z.string().optional().describe("Equivalent to creativeWorkStatus."),
+  credit: z.string().optional().describe("Equivalent to creditText"),
   abstract: z.string().optional(),
   headline: z.string().optional(),
   alternateHeadline: z.string().optional(),
-  timeRequired: z.string().optional(),
-  wordCount: z.number().optional(),
-  contentRating: z.string().optional(),
-  order: z.number().optional(),
+  timeRequired: z.string().optional().describe("Lifted from Article and applied to all works with a temporal duration."),
+  wordCount: z.number().optional().describe("Lifted from Article and applied to all works."),
+  contentRating: z.string().optional().describe("Lifted from Movie and applied to all works."),
+  position: z.number().optional().describe('The position of the item in a series or sequence (usually captured in isPartOf).'),
 }).describe("A creative work of any kind; subtypes can be used to distinguish oddballs and outliers.");
 export type CreativeWork = z.infer<typeof CreativeWorkSchema>;
 

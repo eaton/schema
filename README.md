@@ -4,9 +4,15 @@ At a high level, I'm building a big pile of stuff that can cross-link to itself.
 
 I've also added a few custom types on top of those to handle my own needs, in some cases redefining Schema.org types..
 
-- CreativeWork/Project (in Schema.org language, this is a kind of organization. For me, it's a CreativeWork optionally for a particular employer.)
+- CreativeWork/Project (in Schema.org language, this is a kind of organization. For me, it's a CreativeWork optionally for a particular employer / client.)
 - CreativeWork/Presentation (A talk/presentation I delivered. Some are just metadata, others will have full slides, transcripts, etc.)
-- CreativeWork/Comment (A talk/presentation I delivered. Some are just metadata, others will have full slides, transcripts, etc.)
+- CreativeWork/Note - For snippets of old journal entries, partial annotations and markups of books I'm reading, post-commentary on other content I've written, etc. Something better probably exists, but for now this is it.
+- CreativeWork/SocialMediaPosting/Bookmark - Bookmarks that don't fit in other services.
+- CreativeWork/SocialMediaPosting/Comment - General purpose forum and blog post replies.
+- CreativeWork/SocialMediaPosting/Status - Twitter, Mastodon, and other microblogging service content.
+- Intangible/Connection - Oh look, we've gone and made a triple store  again lol
+- Intangible/Role - For tracking person-to-organization relationships like founding, volunteering, employment, etc.
+- Intangible/Contribution - For person-to-creativeWork contributions like author/editor/director/actor/etc.
 
 Other types may be added, and "subtypes" for these might be necessary to keep things tidy. Project in particular might require a subtype to describe the kind of thing *that was created* as part of the project. Might also need some kind of thing to represent ephemera. All the other types (Thing, Person, Event, Organization, Place, CreativeWork, Book, etc) are just things that *can be mentioned* in my own posts.
 
@@ -22,7 +28,8 @@ classDiagram
         string additionalType
         string name
         List~string~ alternateName
-        List~string~ sameAs
+        List~Reference~Thing~~ sameAs
+        Reference~Thing~ isPartOf
         string description
         url url
         url image
@@ -73,7 +80,7 @@ classDiagram
         string timeRequired
         number wordCount
         string contentRating
-        number order
+        number position
     }
     Thing <|-- CreativeWork : Is A
 
@@ -104,6 +111,15 @@ classDiagram
         Reference~Organization~ client
     }
     CreativeWork <|-- Project : Is A
+
+    class Message {
+        Reference~Person~ from
+        List~Reference~Person~~ to
+        List~Reference~Person~~ cc
+        List~Reference~Person~~ bcc
+        List~Reference~CreativeWork~~ attachment
+    }
+    CreativeWork <|-- Message : Is A
 
     class Presentation {
         List~Reference~Event~~ presentedAt

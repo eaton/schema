@@ -30,3 +30,9 @@ export const BookmarkSchema = SocialMediaPostingSchema.extend({
   additionalTypes: z.literal('bookmark').default('bookmark'),
 }).describe("Shared and saved bookmarks from services like Pinboard, ReadItLater, etc.");
 export type Bookmark = z.infer<typeof BookmarkSchema>;
+
+// See https://schema.org/Photo for details.
+export const PhotoSchema = CreativeWorkSchema.extend({
+  type: z.literal('photo').default('photo'),
+}).describe("A photograph.");
+export type Photo = z.infer<typeof PhotoSchema>;
