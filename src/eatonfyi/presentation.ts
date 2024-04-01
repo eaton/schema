@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CreativeWorkSchema } from "../schema-org/creative-work/index.js";
+import { CreativeWorkSchema } from "../schema-org/creative-work/creative-work.js";
 import { EventSchema } from '../schema-org/event.js';
 import { oneOrMore } from '../util.js';
 

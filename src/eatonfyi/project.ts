@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { reference } from '../util.js';
-import { CreativeWorkSchema } from "../schema-org/creative-work/index.js";
+import { CreativeWorkSchema } from "../schema-org/creative-work/creative-work.js";
 import { OrganizationSchema } from '../schema-org/organization.js';
 
 export const ProjectSchema = CreativeWorkSchema.extend({

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CreativeWorkSchema } from './index.js';
+import { CreativeWorkSchema } from './creative-work.js';
 
 // A book's title is stored in the 'name' property, via Thing/CreativeWork.
 // Books' "creators" are handled by the ParticipantSchema relationships.

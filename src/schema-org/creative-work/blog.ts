@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { reference } from '../../util.js';
-import { CreativeWorkSchema } from "./index.js";
+import { CreativeWorkSchema } from "./creative-work.js";
 import { OrganizationSchema } from '../organization.js';
 
 export const BlogSchema = CreativeWorkSchema.extend({
