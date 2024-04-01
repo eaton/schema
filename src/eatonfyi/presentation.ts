@@ -8,6 +8,6 @@ export const PresentationSchema = CreativeWorkSchema.extend({
   presentedAt: oneOrMore(EventSchema).optional(),
   slides: z.string().url().optional(),
   transcript: z.string().url().optional(),
-  video: z.string().url().optional(),
-});
+  recording: z.string().url().optional(),
+}).describe("An presentation or lecture. ");
 export type Presentation = z.infer<typeof PresentationSchema>;

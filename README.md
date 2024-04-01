@@ -6,18 +6,18 @@ I've also added a few custom types on top of those to handle my own needs, in so
 
 - CreativeWork/Project (in Schema.org language, this is a kind of organization. For me, it's a CreativeWork optionally for a particular employer.)
 - CreativeWork/Presentation (A talk/presentation I delivered. Some are just metadata, others will have full slides, transcripts, etc.)
-- CreativeWork/Note (A short piece of writing usually meant to give a personal status update, or share thoughts about some other item.)
+- CreativeWork/Comment (A talk/presentation I delivered. Some are just metadata, others will have full slides, transcripts, etc.)
 
-Other types may be added, and "subtypes" for these might be necessary to keep things tidy. Project in particular might require a subtype to describe the kind of thing *that was created* as part of the project. Might also need some kind of thing to represent ephemera. All the other types (Thing, Person, Event, Organization, Place, CreativeWork, Book, Movie, etc) are just things that *can be mentioned* in my own posts.
+Other types may be added, and "subtypes" for these might be necessary to keep things tidy. Project in particular might require a subtype to describe the kind of thing *that was created* as part of the project. Might also need some kind of thing to represent ephemera. All the other types (Thing, Person, Event, Organization, Place, CreativeWork, Book, etc) are just things that *can be mentioned* in my own posts.
 
 In general, when a page is built for a `Thing`, Notes/Posts/Reprints/Links/Media `about` it should be listed as if they were the body of that `Thing`. This allows my scribbles about a book, or a particular topic, or a piece of software, to be splattered across a bunch of discontinuous posts but displayed on a single page.
 
-Related: I want it to be possible to create a *thing* and tag it with potentially interesting topics… then turn the topics into things, if it's merited. Also, I want to be able to move things to and from (fairly) simple Markdown-with-frontmatter files as desired. The Connections between items and other references are an example of that. In several places, properties are described as Identifiers. An `Identifier` can be plaintext, a urn format ID for an item in my graph, or a fully realized `Thing` object. `urn:book:[ISBN]` or `urn:book:[ASIN]` or simply `[Title of Book]` could all be used when referencing a book; When creating Markdown files, entering a plain text name or a URN in frontmatter should be the common case. When filling things out for the eventual 11ty page build, URNs will be replaced by the items they point at.
+Related: I want it to be possible to create a *thing* and tag it with potentially interesting topics… then turn the topics into things, if it's merited. Also, I want to be able to move things to and from (fairly) simple Markdown-with-frontmatter files as desired. The Connections between items and other references are an example of that. In several places, properties are described as References. An `Reference` can be plaintext, a urn format ID for an item in my graph, or a fully realized `Thing` object. `urn:book:[ISBN]` or `urn:book:[ASIN]` or simply `[Title of Book]` could all be used when referencing a book; When creating Markdown files, entering a plain text name or a URN in frontmatter should be the common case. When filling things out for the eventual 11ty page build, URNs will be replaced by the items they point at.
 
 ```mermaid
 classDiagram
     class Thing {
-        uri identifier
+        fyid Reference
         string type
         string additionalType
         string name
@@ -38,53 +38,42 @@ classDiagram
     }
     Thing <|-- Person : Is A
 
-    class Persona {
-        Identifier~Person~ person
-        boolean private
-    }
-    Person <|-- Persona : Is A
-
     class Event {
         Dictionary~date~ date
-        Identifier~Event~ parent
-        Identifier~Place~ location
+        Reference~Place~ location
     }
     Thing <|-- Event : Is A
 
     class Organization {
-        Identifier~Organization~ parent
         Dictionary~date~ date
         url logo
         string slogan
         number numberOfEmployees
     }
-    Organization <-- Organization : parent
     Thing <|-- Organization : Is A
 
     class Place {
-        Identifier~Place~ parent
         string geo
         number latitude
         number longitude
     }
-    Place <-- Place : parent
     Thing <|-- Place : Is A
 
     class CreativeWork {
-        Dict~urn~ ids
-        List~Identifier~Thing~~ about
+        Dict~string~ ids
         Dict~date~ date
-        Identifier~Person~ creator
-        List~Identifier~Thing~~ keywords
+        Reference~Person~ creator
+        List~Reference~Thing~~ about
+        Reference~CreativeWork~ isPartOf
+        List~Reference~Thing~~ keywords
+        uri archivedAt
         string abstract
         string headline
         string alternateHeadline
         string timeRequired
+        number wordCount
         string contentRating
-        Identifier~CreativeWork~ isPartOf
-        Identifier~CreativeWork~ series
-        number seriesOrder
-        uri archivedAt
+        number order
     }
     Thing <|-- CreativeWork : Is A
 
@@ -99,17 +88,14 @@ classDiagram
     }
     CreativeWork <|-- Blog : Is A
 
-
     class Book {
         string subtitle
         string format
         string edition
         number pages
-        Identifier~Organization~ publisher
-        Identifier~Organization~ imprint
-        Identifier~Series~ Series
-        number seriesOrder
-        dimensions dimensions
+        Reference~Organization~ publisher
+        Reference~Organization~ imprint
+        Dimensions dimensions
     }
     CreativeWork <|-- Book : Is A
  
@@ -123,33 +109,62 @@ classDiagram
         List~Reference~Event~~ presentedAt
         url slides
         url transcript
-        url video
+        url recording
     }
     CreativeWork <|-- Presentation : Is A
 
+    class Series {
+        number entries
+    }
+    CreativeWork <|-- Series : Is A
+
     class SocialMediaPosting {
         List~Reference~CreativeWork~~ sharedContent
+        number: votes,
+        number: shares
     }
     CreativeWork <|-- SocialMediaPosting : Is A
 
+    class Note { }
+    CreativeWork <|-- Note : Is A
+
+    class Comment {
+        Reference~CreativeWork~ inReplyTo,
+    }
+    SocialMediaPosting <|-- Comment : Is A
+
+    class Status {
+        Reference~CreativeWork~ inReplyTo,
+    }
+    SocialMediaPosting <|-- Status : Is A
+
+    class Bookmark { }
+    SocialMediaPosting <|-- Bookmark : Is A
+
+    class Quotation {
+        Reference~Person~ spokenByCharacter,
+        string: location,
+    }
+    CreativeWork <|-- Quotation : Is A
+
     class Connection {
-        Identifier~Thing~ _from
-        Identifier~Thing~ _to
+        Reference~Thing~ _from
+        Reference~Thing~ _to
         string type
-        string subType
+        string relationship
     }
 
-    class Affiliation {
-        Identifier~Person~ _from
-        Identifier~Organization~ _to
+    class Role {
+        Reference~Person~ _from
+        Reference~Organization~ _to
         string jobTitle
         Dict~date~ date
     }
-    Connection <|-- Affiliation : Is A
+    Connection <|-- Role : Is A
 
     class Contribution {
-        Identifier~Person~ _from
-        Identifier~CreativeWork~ _to
+        Reference~Person~ _from
+        Reference~CreativeWork~ _to
     }
     Connection <|-- Contribution : Is A
 ```

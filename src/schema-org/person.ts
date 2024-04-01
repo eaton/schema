@@ -2,9 +2,6 @@ import { z } from 'zod';
 import { ThingSchema } from "./thing.js";
 import { oneOrDict, reference } from '../util.js';
 
-// The simple textual / nonrelational properties for a given person. It inherits
-// stuff like "name" and "image" and "description" and "url" from Thing.
-
 // Other relational stuff I'll want/need to address includes:
 //
 // birthPlace (0-1 Place)
@@ -26,7 +23,6 @@ import { oneOrDict, reference } from '../util.js';
 // knowsAbout (0-n Thing / Text String / URL)
 
 // See https://schema.org/Person for details.
-
 export const PersonSchema = ThingSchema.extend({
   type: z.literal('person').default('person'),
   date: oneOrDict(z.date()).optional(),
@@ -35,6 +31,6 @@ export const PersonSchema = ThingSchema.extend({
   honorificPrefix: z.string().optional(),
   honorificSuffix: z.string().optional(),
   fictional: z.boolean().optional(),
-});
+}).describe("A person alive, dead, undead, or fictional. Relationships, memberships, jobs, etc. are handled by connection/affiliation records.")
 export type Person = z.infer<typeof PersonSchema>;
 

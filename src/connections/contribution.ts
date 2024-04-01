@@ -17,5 +17,5 @@ export const ContributionSchema = ConnectionSchema.extend({
   _from: reference(PersonSchema),
   _to: reference(CreativeWorkSchema),
   type: z.literal('contribution').default('contribution'),
-});
+}).describe("A creative, supervisory, or editorial contribution to a creative work.")
 export type Contribution = z.infer<typeof ContributionSchema>;

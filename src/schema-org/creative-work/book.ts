@@ -15,8 +15,8 @@ export const BookSchema = CreativeWorkSchema.extend({
   edition: z.string().trim().optional(),
   pages: z.coerce.number().optional(),
   publisher: reference(OrganizationSchema),
-  publisherImprint: reference(OrganizationSchema),
+  imprint: reference(OrganizationSchema),
   dimensions: DimensionsSchema.optional(),
-})
+}).describe("A printed or digital book. Titles should be stored in the name property, and series membership should be indicated using the isPartOf property..");
 export type Book = z.infer<typeof BookSchema>;
 

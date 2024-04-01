@@ -5,7 +5,7 @@ import { oneOrDict, reference } from '../util.js';
 import { ConnectionSchema } from './connection.js';
 
 // Schema.org has one-off properties for a bunch of different person-to-org roles.
-// We have a single Affiliation, and disambuguate with the 'subType' property. For
+// We have a single Affiliation, and disambuguate with the 'relationship' property. For
 // official jobs, 'jobTitle' can be added as well.
 
 // Examples include 'employee', 'founder', 'sponsor', 'volunteer', etc. Together
@@ -13,11 +13,12 @@ import { ConnectionSchema } from './connection.js';
 //
 // person => subType (employee) of => org (jobTitle, date.start, date.end)
 
-export const AffiliationSchema = ConnectionSchema.extend({
+// See https://schema.org/Role for details.
+export const RoleSchema = ConnectionSchema.extend({
   _from: reference(PersonSchema),
   _to: reference(OrganizationSchema),
-  type: z.literal('affiliation').default('affiliation'),
+  type: z.literal('role').default('role'),
   jobTitle: z.string().optional(),
   date: oneOrDict(z.date()).optional()
-});
-export type Affiliation = z.infer<typeof AffiliationSchema>;
+}).describe("A person's membership in or affiliation with an organization. This may include an official job title.")
+export type Role = z.infer<typeof RoleSchema>;
