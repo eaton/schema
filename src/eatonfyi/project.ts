@@ -6,5 +6,6 @@ import { OrganizationSchema } from '../schema-org/organization.js';
 export const ProjectSchema = CreativeWorkSchema.extend({
   type: z.literal('project').default('project'),
   employer: reference(OrganizationSchema).optional(),
+  client: reference(OrganizationSchema).optional(),
 });
 export type Project = z.infer<typeof ProjectSchema>;

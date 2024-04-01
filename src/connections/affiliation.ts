@@ -17,7 +17,6 @@ export const AffiliationSchema = ConnectionSchema.extend({
   _from: reference(PersonSchema),
   _to: reference(OrganizationSchema),
   type: z.literal('affiliation').default('affiliation'),
-  subType: z.string().optional(),
   jobTitle: z.string().optional(),
   date: oneOrDict(z.date()).optional()
 });

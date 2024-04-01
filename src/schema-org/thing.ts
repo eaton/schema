@@ -13,6 +13,7 @@ export const ThingSchema = z.object({
 
   // Concrete subtypes overwrite this their own value.
   type: z.literal('thing').default('thing'),
+  additionalType: z.string().optional(), // This can be used to supply a more specific sub-type.
 
   // This is the absolute baseline human-visible name for a thing; we ALMOST always want
   // it to be required, but some things (like tweets or untitled blog posts) make it
@@ -20,13 +21,14 @@ export const ThingSchema = z.object({
   name: z.string().optional(),
 
   // Alternate name for disambiguation purposes.
-  alias: z.string().optional(),
+  alternateName: oneOrMore(z.string()).optional(),
 
-  // A canonical URL, if one exists. There may actually be quite a few URLs for some
+  description: z.string().optional(),
+  sameAs: oneOrMore(z.string()).optional(),
+
+   // A canonical URL, if one exists. There may actually be quite a few URLs for some
   // entities. Horrifyingly, this may need to be a `oneOrDict` sitaution.
   url: z.string().optional(),
   image: z.string(),
-  description: z.string().optional(),
-  sameAs: oneOrMore(z.string()).optional()
 });
 export type Thing = z.infer<typeof ThingSchema>;

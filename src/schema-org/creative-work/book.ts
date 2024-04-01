@@ -11,7 +11,6 @@ import { PersonSchema } from '../person.js';
 export const BookSchema = CreativeWorkSchema.extend({
   type: z.literal('movie').default('movie'),
   subtitle: z.string().trim().optional(),
-  author: oneOrMore(PersonSchema).optional(),
   format: z.string().trim().optional(),
   edition: z.string().trim().optional(),
   pages: z.coerce.number().optional(),

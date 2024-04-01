@@ -9,9 +9,13 @@ import { PersonSchema } from '../person.js';
 
 // See https://schema.org/CreativeWork for details.
 
+// The 'ids' property is a dictionary of named Identifiers like EANs, ISBNs,
+// ASINs, and so on for the item. On a per-type basis, we create the 'identifier'
+// property by grabbing the best of the ids (ISBN first, then ASIN, then LOC, and
+// so forth).
+
 export const CreativeWorkSchema = ThingSchema.extend({
   type: z.literal('creativeWork').default('creativeWork'),
-  subType: z.string().optional(), // For types I'm not explicitly modeling, like 'Blog' or 'SocialMediaPost'
   ids: oneOrDict(z.string()).optional(),
   creator: reference(PersonSchema).optional(),
   about: oneOrMore(reference(ThingSchema)).optional(),
@@ -20,7 +24,7 @@ export const CreativeWorkSchema = ThingSchema.extend({
   headline: z.string().optional(),
   alternateHeadline: z.string().optional(),
   timeRequired: z.string().optional(),
-  genre: z.string().optional(),
+  contentRating: z.string().optional(),
   isPartOf: z.string().optional(),
   series: z.string().optional(),
   seriesOrder: z.number().optional(),
@@ -37,6 +41,5 @@ export type CreativeWork = z.infer<typeof CreativeWorkSchema>;
 export * from './article.js';
 export * from './blog.js';
 export * from './book.js';
-export * from './movie.js';
 export * from './quotation.js';
 export * from './social-media-posting.js';

@@ -11,12 +11,11 @@ import { CreativeWorkSchema } from '../schema-org/index.js';
 // Examples include 'author', 'illustrator', 'editor', 'translator', 'director', 'actor',
 // etc.
 //
-// person => employee => org (jobTitle, date.start, date.end)
+// person => illustrator => book
 
 export const ContributionSchema = ConnectionSchema.extend({
   _from: reference(PersonSchema),
   _to: reference(CreativeWorkSchema),
   type: z.literal('contribution').default('contribution'),
-  subType:  z.string().optional(),
 });
 export type Contribution = z.infer<typeof ContributionSchema>;

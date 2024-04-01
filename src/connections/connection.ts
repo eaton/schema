@@ -11,3 +11,4 @@ export const ConnectionSchema = z.object({
   subType: z.string().optional(),
 });
 export type Connection = z.infer<typeof ConnectionSchema>;
+
