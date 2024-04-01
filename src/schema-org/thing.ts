@@ -7,7 +7,7 @@ import { oneOrMore } from '../util.js';
 
 // This is the base schema for all 
 export const ThingSchema = z.object({
-  // We're going to use 'FYIDs' as identifiers, which are loosely URN-like but
+  // We're going to use 'FYIDs' as identifiisParters, which are loosely URN-like but
   // without the `urn:` prefix. The idea is to consolidate URLs, ISBNs, ASINs, and
   // custom slugs with a type prefix so things can refer to each other (somewhat)
   // cleanly.
@@ -21,7 +21,7 @@ export const ThingSchema = z.object({
   description: z.string().optional(),
   sameAs: oneOrMore(z.string()).optional().describe("This should be a reference to a Thing, but recursion's a nightmare."),
 
-  isPartOf: z.string().optional().describe("Captures any parent/child relationships, membership in a series, etc., depending on the type of object."),
+  partOf: z.string().optional().describe("Captures any parent/child relationships, membership in a series, etc., depending on the type of object."),
 
   url: z.string().optional().describe("The best-fit canonical URL for an object."),
   image: z.string().describe("The primary representation of a thing. Cover art for a Book, Poster for a Movie, portrait for a Person, etc."),

@@ -7,7 +7,7 @@ import { PersonSchema } from '../person.js';
 // A book's title is stored in the 'name' property, via Thing/CreativeWork.
 // Books' "creators" beyond a single author are handled by the ContributorSchema
 // object. Membership in a series is stored in the 'partOf' property, which maps
-// to the Schema.org 'isPartOf' general property.
+// to the Schema.org 'partOf' general property.
 
 // See https://schema.org/Book for details.
 export const BookSchema = CreativeWorkSchema.extend({
@@ -19,6 +19,6 @@ export const BookSchema = CreativeWorkSchema.extend({
   publisher: reference(OrganizationSchema),
   imprint: reference(OrganizationSchema),
   dimensions: DimensionsSchema.optional(),
-}).describe("A printed or digital book. Titles should be stored in the name property, and series membership should be indicated using the isPartOf property..");
+}).describe("A printed or digital book. Titles should be stored in the name property, and series membership should be indicated using the partOf property.");
 export type Book = z.infer<typeof BookSchema>;
 

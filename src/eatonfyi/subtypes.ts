@@ -20,7 +20,7 @@ export const StatusSchema = SocialMediaPostingSchema.extend({
   type: z.literal('post').default('post'),
   additionalType: z.literal('status').default('status'),
   inReplyTo: reference(CreativeWorkSchema).optional(),
-}).describe("Tweets, Mastodon posts, and other microblog-style content. The isPartOf property should point to a Blog or account URL.");
+}).describe("Tweets, Mastodon posts, and other microblog-style content. The partOf property should point to a Blog or account URL.");
 export type Status = z.infer<typeof StatusSchema>;
 
 // Used for shared/saved bookmarks from various services like

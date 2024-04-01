@@ -28,8 +28,8 @@ classDiagram
         string additionalType
         string name
         List~string~ alternateName
+        Reference~Thing~ partOf
         List~Reference~Thing~~ sameAs
-        Reference~Thing~ isPartOf
         string description
         url url
         url image
@@ -66,12 +66,15 @@ classDiagram
     }
     Thing <|-- Place : Is A
 
+    class Term { }
+    Thing <|-- Term : Is A
+
     class CreativeWork {
         Dict~string~ ids
         Dict~date~ date
         Reference~Person~ creator
         List~Reference~Thing~~ about
-        Reference~CreativeWork~ partOf
+        Reference~CreativeWork~ basedOn
         List~Reference~Thing~~ keywords
         uri archivedAt
         string headline
@@ -84,7 +87,7 @@ classDiagram
     Thing <|-- CreativeWork : Is A
 
     class Article {
-        string articleSection
+        string section
         string pagination
     }
     CreativeWork <|-- Article : Is A
@@ -156,8 +159,11 @@ classDiagram
     class Bookmark { }
     SocialMediaPosting <|-- Bookmark : Is A
 
+    class Taxonomy { }
+    CreativeWork <|-- Taxonomy : Is A
+
     class Quotation {
-        Reference~Person~ spokenByCharacter,
+        Reference~Person~ spokenBy,
         string: location,
     }
     CreativeWork <|-- Quotation : Is A
