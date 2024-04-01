@@ -31,7 +31,6 @@ export const PersonSchema = ThingSchema.extend({
   type: z.literal('person').default('person'),
   familyName: z.string().optional(),
   givenName: z.string().optional(),
-  additionalName: z.string().optional(),
   honorificPrefix: z.string().optional(),
   honorificSuffix: z.string().optional(),
   email: z.string().email().optional(),

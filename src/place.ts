@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ThingSchema } from "./thing.js";
 import { reference, oneOrMore, oneOrDict } from './util.js';
 
-// See https://schema.org/Event for details.
+// See https://schema.org/Place for details.
 
 export const PlaceSchema = ThingSchema.extend({
   type: z.literal('place').default('place'),
