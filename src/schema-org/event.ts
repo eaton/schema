@@ -7,7 +7,7 @@ import { PlaceSchema } from './place.js';
 // Subtypes I use may include 'Festival', 'EventSeries', 'SocialEvent', 'Hackathon',
 // 'BusinessEvent', 'ScreeningEvent', 'TheaterEvent', 'MusicEvent', and 'LiteraryEvent'
 
-// The 'isPartOf' property corresponds to the 'superEvent' Schema.org property.
+// The 'partOf' property corresponds to the 'superEvent' Schema.org property.
 
 // See https://schema.org/Event for details.
 export const EventSchema = ThingSchema.extend({

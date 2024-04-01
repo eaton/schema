@@ -5,7 +5,9 @@ import { CreativeWorkSchema } from './creative-work.js';
 import { PersonSchema } from '../person.js';
 
 // A book's title is stored in the 'name' property, via Thing/CreativeWork.
-// Books' "creators" are handled by the ParticipantSchema relationships.
+// Books' "creators" beyond a single author are handled by the ContributorSchema
+// object. Membership in a series is stored in the 'partOf' property, which maps
+// to the Schema.org 'isPartOf' general property.
 
 // See https://schema.org/Book for details.
 export const BookSchema = CreativeWorkSchema.extend({

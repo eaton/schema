@@ -3,7 +3,7 @@ import { ThingSchema } from "./thing.js";
 import { oneOrDict } from '../util.js';
 
 // See https://schema.org/Organization for details.
-// The 'isPartOf' property corresponds to the 'parentOrganization' Schema.org property.
+// The 'partOf' property corresponds to the 'parentOrganization' Schema.org property.
 
 export const OrganizationSchema = ThingSchema.extend({
   type: z.literal('organization').default('organization'),

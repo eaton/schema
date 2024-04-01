@@ -71,10 +71,9 @@ classDiagram
         Dict~date~ date
         Reference~Person~ creator
         List~Reference~Thing~~ about
-        Reference~CreativeWork~ isPartOf
+        Reference~CreativeWork~ partOf
         List~Reference~Thing~~ keywords
         uri archivedAt
-        string abstract
         string headline
         string alternateHeadline
         string timeRequired

@@ -39,7 +39,6 @@ export const CreativeWorkSchema = ThingSchema.extend({
 
   status: z.string().optional().describe("Equivalent to creativeWorkStatus."),
   credit: z.string().optional().describe("Equivalent to creditText"),
-  abstract: z.string().optional(),
   headline: z.string().optional(),
   alternateHeadline: z.string().optional(),
   timeRequired: z.string().optional().describe("Lifted from Article and applied to all works with a temporal duration."),

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { ThingSchema } from "./thing.js";
 
-// The 'isPartOf' property corresponds to the 'containedInPlace' Schema.org property.
+// The 'partOf' property corresponds to the 'containedInPlace' Schema.org property.
 
 // See https://schema.org/Place for details.
 export const PlaceSchema = ThingSchema.extend({
