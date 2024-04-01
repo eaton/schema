@@ -6,11 +6,7 @@ I've also added a few custom types on top of those to handle my own needs, in so
 
 - CreativeWork/Project (in Schema.org language, this is a kind of organization. For me, it's a CreativeWork optionally for a particular employer.)
 - CreativeWork/Presentation (A talk/presentation I delivered. Some are just metadata, others will have full slides, transcripts, etc.)
-- CreativeWork/Reprint (An article I wrote somewhere else, and am)
 - CreativeWork/Note (A short piece of writing usually meant to give a personal status update, or share thoughts about some other item.)
-- Media (A video, photo, image post, etc that I created and posted as a distinct entity rather than a support asset for something else)
-- SocialMediaPosting (A shared link)
-- Quotation (A saved quotation)
 
 Other types may be added, and "subtypes" for these might be necessary to keep things tidy. Project in particular might require a subtype to describe the kind of thing *that was created* as part of the project. Might also need some kind of thing to represent ephemera. All the other types (Thing, Person, Event, Organization, Place, CreativeWork, Book, Movie, etc) are just things that *can be mentioned* in my own posts.
 
@@ -23,8 +19,10 @@ classDiagram
     class Thing {
         uri identifier
         string type
+        string additionalType
         string name
-        List~string~ alias
+        List~string~ alternateName
+        List~string~ sameAs
         string description
         url url
         url image
@@ -36,20 +34,19 @@ classDiagram
         string givenName
         string honorificPrefix
         string honorificSuffix
-        string email
-        number networth
+        bool fictional
     }
     Thing <|-- Person : Is A
 
     class Persona {
         Identifier~Person~ person
-        number networth
+        boolean private
     }
     Person <|-- Persona : Is A
 
     class Event {
-        Identifier~Event~ parent
         Dictionary~date~ date
+        Identifier~Event~ parent
         Identifier~Place~ location
     }
     Thing <|-- Event : Is A
@@ -59,6 +56,7 @@ classDiagram
         Dictionary~date~ date
         url logo
         string slogan
+        number numberOfEmployees
     }
     Organization <-- Organization : parent
     Thing <|-- Organization : Is A
@@ -74,12 +72,18 @@ classDiagram
 
     class CreativeWork {
         Dict~urn~ ids
-        List~Urn~Thing~~ about
+        List~Identifier~Thing~~ about
         Dict~date~ date
+        Identifier~Person~ creator
+        List~Identifier~Thing~~ keywords
         string abstract
         string headline
         string alternateHeadline
-        string genre
+        string timeRequired
+        string contentRating
+        Identifier~CreativeWork~ isPartOf
+        Identifier~CreativeWork~ series
+        number seriesOrder
         uri archivedAt
     }
     Thing <|-- CreativeWork : Is A
@@ -90,12 +94,11 @@ classDiagram
     }
     CreativeWork <|-- Article : Is A
 
-    class Episode {
-        number episodeNumber
-        Identifier~CreativeWork~ season
-        Identifier~CreativeWork~ series
+    class Blog {
+        Reference~Organization~ platform
     }
-    CreativeWork <|-- Episode : Is A
+    CreativeWork <|-- Blog : Is A
+
 
     class Book {
         string subtitle
@@ -109,49 +112,44 @@ classDiagram
         dimensions dimensions
     }
     CreativeWork <|-- Book : Is A
-
-    class Movie {
-        number duration
-        string contentRating
-        Identifier~CreativeWork~ series
-        number seriesOrder
-    }
-    CreativeWork <|-- Movie : Is A
-
+ 
     class Project {
-
+        Reference~Organization~ employer
+        Reference~Organization~ client
     }
     CreativeWork <|-- Project : Is A
 
-    class Note {
-
-    }
-    CreativeWork <|-- Note : Is A
-
     class Presentation {
-
+        List~Reference~Event~~ presentedAt
+        url slides
+        url transcript
+        url video
     }
     CreativeWork <|-- Presentation : Is A
 
-    class Appearance {
-        
+    class SocialMediaPosting {
+        List~Reference~CreativeWork~~ sharedContent
     }
-    CreativeWork <|-- Appearance : Is A
-
-    class Story {
-        
-    }
-    CreativeWork <|-- Story : Is A
+    CreativeWork <|-- SocialMediaPosting : Is A
 
     class Connection {
         Identifier~Thing~ _from
         Identifier~Thing~ _to
         string type
+        string subType
     }
 
     class Affiliation {
+        Identifier~Person~ _from
+        Identifier~Organization~ _to
         string jobTitle
         Dict~date~ date
     }
     Connection <|-- Affiliation : Is A
+
+    class Contribution {
+        Identifier~Person~ _from
+        Identifier~CreativeWork~ _to
+    }
+    Connection <|-- Contribution : Is A
 ```
