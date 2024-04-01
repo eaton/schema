@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { ThingSchema } from "./thing.js";
-import { reference, oneOrMore, oneOrDict } from './util.js';
+import { reference, oneOrMore, oneOrDict } from '../util.js';
 
 // See https://schema.org/Place for details.
 

@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { PersonSchema } from "../person.js";
-import { OrganizationSchema } from "../organization.js";
+import { PersonSchema } from "../schema-org/person.js";
+import { OrganizationSchema } from "../schema-org/organization.js";
 import { oneOrDict, reference } from '../util.js';
 import { ConnectionSchema } from './connection.js';
 

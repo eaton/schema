@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { ThingSchema } from "./thing.js";
-import { oneOrDict, oneOrMore, reference } from './util.js';
+import { oneOrDict, oneOrMore, reference } from '../util.js';
 
 // Note that we're NOT including plaintext representations; this is a way
 // of standardizing the metadata about things and their relationships to
@@ -10,20 +10,24 @@ import { oneOrDict, oneOrMore, reference } from './util.js';
 
 export const CreativeWorkSchema = ThingSchema.extend({
   type: z.literal('creativeWork').default('creativeWork'),
+  subType: z.string().optional(), // For types I'm not explicitly modeling, like 'Blog' or 'SocialMediaPost'
   ids: oneOrDict(z.string()).optional(),
   about: oneOrMore(reference(ThingSchema)),
+  keywords: oneOrMore(reference(ThingSchema)),
   abstract: z.string().optional(),
   headline: z.string().optional(),
   alternateHeadline: z.string().optional(),
+  timeRequired: z.string().optional(),
   genre: z.string().optional(),
+  isPartOf: z.string().optional(),
   series: z.string().optional(),
   seriesOrder: z.number().optional(),
   date: oneOrDict(z.date()).optional(),
-  archivedAt: z.string().url().optional()
+  archivedAt: z.string().url().optional(),
 })
 export type CreativeWork = z.infer<typeof CreativeWorkSchema>;
 
 // Relationships include:
 // isBasedOn (creativeWork)
-// isPartOf (creativeWork)
 // mentions (anything)
+// creator, author, editor, illustrator, translator, etc: Person, or Contributor with Role

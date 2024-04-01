@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { oneOrDict, reference } from '../util.js';
-import { ThingSchema } from '../thing.js';
+import { ThingSchema } from '../schema-org/thing.js';
 
 // Absolute baseline relationship
 

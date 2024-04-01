@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { reference, oneOrMore, oneOrDict } from './util.js';
+import { reference, oneOrMore, oneOrDict } from '../util.js';
 
 // TODO: I'd like to use URIs as unique identifiers for things. That would allow
 // both remote URLs and my own invented cluster of URNs to serve as identifiers.

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { ThingSchema } from "./thing.js";
-import { oneOrDict, reference } from './util.js';
+import { oneOrDict, reference } from '../util.js';
 
 // The simple textual / nonrelational properties for a given person. It inherits
 // stuff like "name" and "image" and "description" and "url" from Thing.
@@ -29,6 +29,7 @@ import { oneOrDict, reference } from './util.js';
 
 export const PersonSchema = ThingSchema.extend({
   type: z.literal('person').default('person'),
+  fictional: z.boolean().optional(),
   familyName: z.string().optional(),
   givenName: z.string().optional(),
   honorificPrefix: z.string().optional(),
