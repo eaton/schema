@@ -19,6 +19,7 @@ export const ContentSchema = z.object({
   thing: z.string(),
   property: z.string().default('body'),
   mime: z.string().default('text/markdown'),
+  variation: z.string().optional().describe('Stores variation names for meaningfully different versions of the same content. (Different reading levels, etc).'),
   value: z.string()
 })
 export type Content = z.infer<typeof ContentSchema>;

@@ -22,17 +22,19 @@ import { z } from 'zod';
 // - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
 // The idea here is to capture a source file and any auto-generated permutations of that source file.
+// The purpose is to allow any references to point at something internal like media://foo.bar/baz.jpeg,
+// and replace it with a correct local or remote web URL.
+// 
 // Quite a bit of this is probably overkill, but hey.
+
 export const FileSchema = z.object({
   id: z.string(),
-  variant: z.string(),
-  protocol: z.string(),
-  server: z.string(),
-  path: z.string(),
-  name: z.string().optional(),
-  alt: z.string().optional(),
+  basedOn: z.string().optional().describe("For thumbnails and alternate-format versions of a file."),
+  variant: z.string().optional().describe("Human-readable label for the variation."),
+  url: z.string().describe("Storage URL for the file itself; may be split into path and server. Can point to remote files."),
   mime: z.string(),
   bytes: z.number().optional(),
-  outputFileName: z.string().optional(),
+  alt: z.string().optional().describe("Alt text for images"),
+  filename: z.string().optional().describe("Optional public-facing filename for links and downloads."),
 })
 export type File = z.infer<typeof FileSchema>;
