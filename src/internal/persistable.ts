@@ -6,18 +6,12 @@ import { z } from 'zod';
 
 // We'll see.
 
-export const Persistable = z.object({
+export const Publishable = z.object({
   _created: z.date().default(new Date(Date.now())),
   _modified: z.date().default(new Date(Date.now())),
   _deleted: z.boolean().optional(),
-})
-
-export const ArangoDocument = Persistable.extend({
-  _collection: z.string(),
-  _key: z.string().optional(),
-  _id: z.string().optional(),
-})
-
-export const SqlRow = Persistable.extend({
-  _table: z.string(),
-})
+  _hidden: z.boolean().optional(),
+  meta: z.object({
+    attachments: z.array(z.string().url().optional()).optional(),
+  }).optional(),
+});

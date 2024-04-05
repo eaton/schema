@@ -14,7 +14,7 @@ import { z } from 'zod';
 
 // @see {@link https://www.iana.org/assignments/markdown-variants/markdown-variants.xhtml}
 
-export const ContentSchema = z.object({
+export const BodySchema = z.object({
   id: z.string(),
   thing: z.string(),
   property: z.string().default('body'),
@@ -22,4 +22,4 @@ export const ContentSchema = z.object({
   variation: z.string().optional().describe('Stores variation names for meaningfully different versions of the same content. (Different reading levels, etc).'),
   value: z.string()
 })
-export type Content = z.infer<typeof ContentSchema>;
+export type Body = z.infer<typeof BodySchema>;

@@ -1,5 +1,12 @@
 import { z } from 'zod';
 
+/** 
+ * Zod utility types for complex relationships. These may be refactored out
+ * in the future, as Zod's in-editor performance can bog badly when complex
+ * relationships and potential self-references are involved. The Thing and
+ * CreativeWork types in particular have a lot of opportunity for that.
+ */
+
 /**
  * For my purposes, a 'reference' is either a string or a populated schema entity.
  * If it's a string, it can either be an 'FYID' (:TYPECODE:UNIQUESTRING:OPTIONAL-SUBSTRING)
@@ -8,12 +15,8 @@ import { z } from 'zod';
  * value. The name of a particular podcast, for example.
  */
 export function reference<T extends z.ZodTypeAny>(thingType: T) {
-  return z.union([
-    z.string(),
-    thingType
-  ]);
+  return z.union([z.string(), thingType]);
 }
-
 
 /**
  * One single item, or an array of items of a given type.
@@ -37,12 +40,3 @@ export function oneOrDict<T extends z.ZodTypeAny>(thingType: T) {
     z.record(thingType)
   ])
 }
-
-// Everything is assumed to be in inches; we convert before processing.
-export const DimensionsSchema = z.object({
-  width: z.coerce.number().optional(),
-  height: z.coerce.number().optional(),
-  length: z.coerce.number().optional(),
-  weight: z.coerce.number().optional(),
-});
-export type Dimension = z.infer<typeof DimensionsSchema>;
