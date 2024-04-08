@@ -27,7 +27,7 @@ export type Status = z.infer<typeof StatusSchema>;
 // Pinboard, ReadItLater, and so on.
 export const BookmarkSchema = SocialMediaPostingSchema.extend({
   type: z.literal('post').default('post'),
-  additionalTypes: z.literal('bookmark').default('bookmark'),
+  additionalType: z.literal('bookmark').default('bookmark'),
 }).describe("Shared and saved bookmarks from services like Pinboard, ReadItLater, etc.");
 export type Bookmark = z.infer<typeof BookmarkSchema>;
 
