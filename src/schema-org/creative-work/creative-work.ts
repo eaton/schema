@@ -47,6 +47,7 @@ export const CreativeWorkSchema = ThingSchema.extend({
   headline: z.string().optional(),
   alternateHeadline: z.string().optional(),
   timeRequired: z.string().optional().describe("Lifted from Article and applied to all works with a temporal duration."),
+  text: z.union([z.string(), z.record(z.string())]).optional(),
   wordCount: z.number().optional().describe("Lifted from Article and applied to all works."),
   contentRating: z.string().optional().describe("Lifted from Movie and applied to all works."),
   position: z.number().optional().describe('The position of the item in a series or sequence (usually captured in partOf).'),
