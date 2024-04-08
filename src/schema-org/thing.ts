@@ -15,7 +15,7 @@ export const ThingSchema = z.object({
   type: z.literal('thing').default('thing').describe("Inherited schema types overwrite this literal with their own key."),
   additionalType: z.string().optional().describe("Used to capture unmodeled child types from Schema.org."),
 
-  name: z.string().optional().describe("Serves as fullName, title, label, etc depending on the object. Unpopulated untitled or datestamped/serialized works."),
+  name: z.coerce.string().optional().describe("Serves as fullName, title, label, etc depending on the object. Unpopulated untitled or datestamped/serialized works."),
   alternateName: oneOrMore(z.string()).optional().describe("Alternate name for disambiguation purposes"),
 
   description: z.string().optional(),
