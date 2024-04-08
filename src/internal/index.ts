@@ -1,3 +1,3 @@
 export * from './file.js';
 export * from './persistable.js';
-export * from './content.js';
+export * from './body.js';
