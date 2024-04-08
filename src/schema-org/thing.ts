@@ -24,6 +24,6 @@ export const ThingSchema = z.object({
   partOf: z.string().optional().describe("Captures any parent/child relationships, membership in a series, etc., depending on the type of object."),
 
   url: z.string().optional().describe("The best-fit canonical URL for an object."),
-  image: z.string().describe("The primary representation of a thing. Cover art for a Book, Poster for a Movie, portrait for a Person, etc."),
+  image: z.string().optional().describe("The primary representation of a thing. Cover art for a Book, Poster for a Movie, portrait for a Person, etc."),
 });
 export type Thing = z.infer<typeof ThingSchema>;
