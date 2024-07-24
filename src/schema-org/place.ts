@@ -1,14 +1,12 @@
 import { z } from 'zod';
-import { ThingSchema } from "./thing.js";
+import { ThingSchema } from './thing.js';
 
-// The 'partOf' property corresponds to the 'containedInPlace' Schema.org property.
-
-// See https://schema.org/Place for details.
 export const PlaceSchema = ThingSchema.extend({
-  type: z.literal('place').default('place'),
-  geo: z.string().optional(),
+  type: z.string().default('Place'),
+  isVirtual: z.boolean().optional(),
   latitude: z.number().optional(),
   longitude: z.number().optional(),
-}).describe("Entities that have a somewhat fixed, physical extension")
-export type Place = z.infer<typeof PlaceSchema>;
+  population: z.number().optional(),
+});
 
+export type Place = z.infer<typeof PlaceSchema>;

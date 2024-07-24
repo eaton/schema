@@ -1,16 +1,20 @@
 import { z } from 'zod';
-import { ThingSchema } from "./thing.js";
-import { oneOrDict, reference } from '../util.js';
+import { oneOrMany, recordWithHints } from '../fragments/index.js';
+import { ThingSchema } from './thing.js';
 
-// See https://schema.org/Person for details.
 export const PersonSchema = ThingSchema.extend({
-  type: z.literal('person').default('person'),
-  date: oneOrDict(z.date()).optional(),
-  familyName: z.string().optional(),
-  givenName: z.string().optional(),
-  honorificPrefix: z.string().optional(),
-  honorificSuffix: z.string().optional(),
-  fictional: z.boolean().optional(),
-}).describe("A person alive, dead, undead, or fictional. Relationships, memberships, jobs, etc. are handled by connection/affiliation records.")
-export type Person = z.infer<typeof PersonSchema>;
+  type: z.string().default('Person'),
+  dates: recordWithHints(z.coerce.date(), ['birth', 'death']).optional(),
+  places: z.record(z.string()).optional(),
+  knows: oneOrMany(z.string()).optional(),
+  knowsAbout: oneOrMany(z.string()).optional(),
+  isFictional: z.boolean().optional(),
+  isPartOf: oneOrMany(z.string())
+    .optional()
+    .describe(
+      'For People, this includes organization membership, employment, etc.',
+    ),
+  relation: z.record(z.string().or(z.array(z.string()))).optional(), // Either a single string, or a dictionary of strings or string arrays.
+});
 
+export type Person = z.infer<typeof PersonSchema>;

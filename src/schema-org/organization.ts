@@ -1,15 +1,15 @@
 import { z } from 'zod';
-import { ThingSchema } from "./thing.js";
-import { oneOrDict } from '../util.js';
-
-// See https://schema.org/Organization for details.
-// The 'partOf' property corresponds to the 'parentOrganization' Schema.org property.
+import { oneOrMany, recordWithHints } from '../fragments/index.js';
+import { ThingSchema } from './thing.js';
 
 export const OrganizationSchema = ThingSchema.extend({
-  type: z.literal('organization').default('organization'),
-  date: oneOrDict(z.date()).optional(),
-  logo: z.string().optional(),
-  slogan: z.string().optional(),
-  numberOfMembers: z.number().optional()
-}).describe("An organization such as a business, NGO, corporation, club, etc. numberOfMembers is used in place of numberOfEmployees.")
+  type: z.string().default('Organization'),
+  dates: recordWithHints(z.coerce.date(), [
+    'founding',
+    'dissolution',
+  ]).optional(),
+  places: z.record(z.string()).optional(),
+  memberOf: oneOrMany(z.string()).optional(), // none, one, or more string or string/order objects
+});
+
 export type Organization = z.infer<typeof OrganizationSchema>;
