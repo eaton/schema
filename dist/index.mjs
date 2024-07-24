@@ -463,55 +463,55 @@ const CreativeWorkSchema = ThingSchema.extend({
   commentCount: z.number().optional()
 });
 
-const EventSchema = ThingSchema.extend({
-  type: z.string().default("Event"),
-  dates: recordWithHints(z.coerce.date(), ["start", "end"]).optional(),
-  location: z.string().optional(),
-  attendees: z.coerce.number().optional(),
-  isPartOf: oneOrMany(z.string()).optional(),
-  // none, one, or more string or string/order objects
-  hasPart: oneOrMany(z.string()).optional()
-  // none, one, or more string or string/order objects
+const BookmarkSchema = CreativeWorkSchema.extend({
+  type: z.string().default("Bookmark"),
+  sharedContent: urlSchema
 });
 
-const OrganizationSchema = ThingSchema.extend({
-  type: z.string().default("Organization"),
-  dates: recordWithHints(z.coerce.date(), [
-    "founding",
-    "dissolution"
-  ]).optional(),
-  places: z.record(z.string()).optional(),
-  memberOf: oneOrMany(z.string()).optional()
-  // none, one, or more string or string/order objects
+const DeviceSchema = ThingSchema.extend({
+  type: z.string().default("HardwareDevice"),
+  dates: z.record(z.coerce.date()).optional(),
+  category: z.string().optional(),
+  manufacturer: z.string().optional(),
+  platform: z.string().optional(),
+  model: z.string().optional(),
+  cpu: z.string().optional(),
+  cores: z.coerce.number().optional(),
+  mhz: z.string().optional(),
+  mips: z.string().optional(),
+  ram: z.string().optional(),
+  storage: z.string().optional(),
+  screen: SizeSchema.optional(),
+  camera: SizeSchema.optional(),
+  multi: z.coerce.number().optional(),
+  msrp: z.string().optional(),
+  notes: z.string().optional()
 });
 
-const PersonSchema = ThingSchema.extend({
-  type: z.string().default("Person"),
-  dates: recordWithHints(z.coerce.date(), ["birth", "death"]).optional(),
-  places: z.record(z.string()).optional(),
-  knows: oneOrMany(z.string()).optional(),
-  knowsAbout: oneOrMany(z.string()).optional(),
-  isFictional: z.boolean().optional(),
-  isPartOf: oneOrMany(z.string()).optional().describe(
-    "For People, this includes organization membership, employment, etc."
-  ),
-  relation: z.record(z.string().or(z.array(z.string()))).optional()
-  // Either a single string, or a dictionary of strings or string arrays.
+const SlideSchema = z.object({
+  image: z.string().optional(),
+  alt: z.string().optional(),
+  text: z.string().optional(),
+  isBonusSlide: z.coerce.boolean().optional()
 });
-
-const PlaceSchema = ThingSchema.extend({
-  type: z.string().default("Place"),
-  isVirtual: z.boolean().optional(),
-  latitude: z.number().optional(),
-  longitude: z.number().optional(),
-  population: z.number().optional()
+const TalkEventSchema = z.object({
+  event: z.string(),
+  date: z.coerce.date().optional(),
+  withTitle: z.string().optional(),
+  isCanonicalVersion: z.coerce.boolean().optional(),
+  description: z.string().optional(),
+  recording: urlSchema.optional(),
+  transcript: z.string().optional(),
+  pdf: z.string().optional(),
+  cuesheet: z.string().optional(),
+  keynoteFile: z.string().optional(),
+  url: z.string().optional()
 });
-
-const RoleSchema = ThingSchema.extend({
-  from: z.string(),
-  to: z.string().or(ThingSchema),
-  startDate: z.coerce.date().optional(),
-  endDate: z.coerce.date().optional()
+const TalkSchema = CreativeWorkSchema.extend({
+  type: z.string().default("Presentation"),
+  performances: z.array(TalkEventSchema).optional(),
+  keySlide: z.number().optional(),
+  slides: z.array(SlideSchema).optional()
 });
 
 const ArticleSchema = CreativeWorkSchema.extend({
@@ -570,60 +570,66 @@ const MessageSchema = CreativeWorkSchema.extend({
   attachment: oneOrMany(z.string()).optional()
 });
 
+const ProjectSchema = CreativeWorkSchema.extend({
+  type: z.string().default("Project"),
+  usage: z.number().optional(),
+  additionalType: z.string().optional()
+});
+
 const SocialMediaPostingSchema = CreativeWorkSchema.extend({
   type: z.string().default("SocialMediaPosting"),
   sharedContent: oneOrMany(urlSchema).optional()
 });
 
-const BookmarkSchema = CreativeWorkSchema.extend({
-  type: z.string().default("Bookmark"),
-  sharedContent: urlSchema
+const EventSchema = ThingSchema.extend({
+  type: z.string().default("Event"),
+  dates: recordWithHints(z.coerce.date(), ["start", "end"]).optional(),
+  location: z.string().optional(),
+  attendees: z.coerce.number().optional(),
+  isPartOf: oneOrMany(z.string()).optional(),
+  // none, one, or more string or string/order objects
+  hasPart: oneOrMany(z.string()).optional()
+  // none, one, or more string or string/order objects
 });
 
-const DeviceSchema = ThingSchema.extend({
-  type: z.string().default("HardwareDevice"),
-  dates: z.record(z.coerce.date()).optional(),
-  category: z.string().optional(),
-  manufacturer: z.string().optional(),
-  platform: z.string().optional(),
-  model: z.string().optional(),
-  cpu: z.string().optional(),
-  cores: z.coerce.number().optional(),
-  mhz: z.string().optional(),
-  mips: z.string().optional(),
-  ram: z.string().optional(),
-  storage: z.string().optional(),
-  screen: SizeSchema.optional(),
-  camera: SizeSchema.optional(),
-  multi: z.coerce.number().optional(),
-  msrp: z.string().optional(),
-  notes: z.string().optional()
+const OrganizationSchema = ThingSchema.extend({
+  type: z.string().default("Organization"),
+  dates: recordWithHints(z.coerce.date(), [
+    "founding",
+    "dissolution"
+  ]).optional(),
+  places: z.record(z.string()).optional(),
+  memberOf: oneOrMany(z.string()).optional()
+  // none, one, or more string or string/order objects
 });
 
-const SlideSchema = z.object({
-  image: z.string().optional(),
-  alt: z.string().optional(),
-  text: z.string().optional(),
-  isBonusSlide: z.coerce.boolean().optional()
-});
-const TalkEventSchema = z.object({
-  event: z.string(),
-  date: z.coerce.date().optional(),
-  withTitle: z.string().optional(),
-  isCanonicalVersion: z.coerce.boolean().optional(),
-  description: z.string().optional(),
-  recording: urlSchema.optional(),
-  transcript: z.string().optional(),
-  pdf: z.string().optional(),
-  cuesheet: z.string().optional(),
-  keynoteFile: z.string().optional(),
-  url: z.string().optional()
-});
-const TalkSchema = CreativeWorkSchema.extend({
-  type: z.string().default("Presentation"),
-  performances: z.array(TalkEventSchema).optional(),
-  keySlide: z.number().optional(),
-  slides: z.array(SlideSchema).optional()
+const PersonSchema = ThingSchema.extend({
+  type: z.string().default("Person"),
+  dates: recordWithHints(z.coerce.date(), ["birth", "death"]).optional(),
+  places: z.record(z.string()).optional(),
+  knows: oneOrMany(z.string()).optional(),
+  knowsAbout: oneOrMany(z.string()).optional(),
+  isFictional: z.boolean().optional(),
+  isPartOf: oneOrMany(z.string()).optional().describe(
+    "For People, this includes organization membership, employment, etc."
+  ),
+  relation: z.record(z.string().or(z.array(z.string()))).optional()
+  // Either a single string, or a dictionary of strings or string arrays.
 });
 
-export { ArticleSchema, BookSchema, BookmarkSchema, CommentAuthorSchema, CommentSchema, ContactSchema, CreativeWorkSchema, DeviceSchema, EpisodeSchema, EventSchema, MessageSchema, OrganizationSchema, PartialBookSchema, PersonSchema, PlaceSchema, RoleSchema, SizeSchema, SlideSchema, SocialMediaPostingSchema, TalkEventSchema, TalkSchema, ThingSchema, getCollection, getId, getMeta, getRawType, getSchema, getType, idPattern, idSchema, idSeparator$1 as idSeparator, listCollections, oneOrMany, recordWithHints, schemas, toId, urlSchema, urlStringSchema };
+const PlaceSchema = ThingSchema.extend({
+  type: z.string().default("Place"),
+  isVirtual: z.boolean().optional(),
+  latitude: z.number().optional(),
+  longitude: z.number().optional(),
+  population: z.number().optional()
+});
+
+const RoleSchema = ThingSchema.extend({
+  from: z.string(),
+  to: z.string().or(ThingSchema),
+  startDate: z.coerce.date().optional(),
+  endDate: z.coerce.date().optional()
+});
+
+export { ArticleSchema, BookSchema, BookmarkSchema, CommentAuthorSchema, CommentSchema, ContactSchema, CreativeWorkSchema, DeviceSchema, EpisodeSchema, EventSchema, MessageSchema, OrganizationSchema, PartialBookSchema, PersonSchema, PlaceSchema, ProjectSchema, RoleSchema, SizeSchema, SlideSchema, SocialMediaPostingSchema, TalkEventSchema, TalkSchema, ThingSchema, getCollection, getId, getMeta, getRawType, getSchema, getType, idPattern, idSchema, idSeparator$1 as idSeparator, listCollections, oneOrMany, recordWithHints, schemas, toId, urlSchema, urlStringSchema };

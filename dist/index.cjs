@@ -465,55 +465,55 @@ const CreativeWorkSchema = ThingSchema.extend({
   commentCount: zod.z.number().optional()
 });
 
-const EventSchema = ThingSchema.extend({
-  type: zod.z.string().default("Event"),
-  dates: recordWithHints(zod.z.coerce.date(), ["start", "end"]).optional(),
-  location: zod.z.string().optional(),
-  attendees: zod.z.coerce.number().optional(),
-  isPartOf: oneOrMany(zod.z.string()).optional(),
-  // none, one, or more string or string/order objects
-  hasPart: oneOrMany(zod.z.string()).optional()
-  // none, one, or more string or string/order objects
+const BookmarkSchema = CreativeWorkSchema.extend({
+  type: zod.z.string().default("Bookmark"),
+  sharedContent: urlSchema
 });
 
-const OrganizationSchema = ThingSchema.extend({
-  type: zod.z.string().default("Organization"),
-  dates: recordWithHints(zod.z.coerce.date(), [
-    "founding",
-    "dissolution"
-  ]).optional(),
-  places: zod.z.record(zod.z.string()).optional(),
-  memberOf: oneOrMany(zod.z.string()).optional()
-  // none, one, or more string or string/order objects
+const DeviceSchema = ThingSchema.extend({
+  type: zod.z.string().default("HardwareDevice"),
+  dates: zod.z.record(zod.z.coerce.date()).optional(),
+  category: zod.z.string().optional(),
+  manufacturer: zod.z.string().optional(),
+  platform: zod.z.string().optional(),
+  model: zod.z.string().optional(),
+  cpu: zod.z.string().optional(),
+  cores: zod.z.coerce.number().optional(),
+  mhz: zod.z.string().optional(),
+  mips: zod.z.string().optional(),
+  ram: zod.z.string().optional(),
+  storage: zod.z.string().optional(),
+  screen: SizeSchema.optional(),
+  camera: SizeSchema.optional(),
+  multi: zod.z.coerce.number().optional(),
+  msrp: zod.z.string().optional(),
+  notes: zod.z.string().optional()
 });
 
-const PersonSchema = ThingSchema.extend({
-  type: zod.z.string().default("Person"),
-  dates: recordWithHints(zod.z.coerce.date(), ["birth", "death"]).optional(),
-  places: zod.z.record(zod.z.string()).optional(),
-  knows: oneOrMany(zod.z.string()).optional(),
-  knowsAbout: oneOrMany(zod.z.string()).optional(),
-  isFictional: zod.z.boolean().optional(),
-  isPartOf: oneOrMany(zod.z.string()).optional().describe(
-    "For People, this includes organization membership, employment, etc."
-  ),
-  relation: zod.z.record(zod.z.string().or(zod.z.array(zod.z.string()))).optional()
-  // Either a single string, or a dictionary of strings or string arrays.
+const SlideSchema = zod.z.object({
+  image: zod.z.string().optional(),
+  alt: zod.z.string().optional(),
+  text: zod.z.string().optional(),
+  isBonusSlide: zod.z.coerce.boolean().optional()
 });
-
-const PlaceSchema = ThingSchema.extend({
-  type: zod.z.string().default("Place"),
-  isVirtual: zod.z.boolean().optional(),
-  latitude: zod.z.number().optional(),
-  longitude: zod.z.number().optional(),
-  population: zod.z.number().optional()
+const TalkEventSchema = zod.z.object({
+  event: zod.z.string(),
+  date: zod.z.coerce.date().optional(),
+  withTitle: zod.z.string().optional(),
+  isCanonicalVersion: zod.z.coerce.boolean().optional(),
+  description: zod.z.string().optional(),
+  recording: urlSchema.optional(),
+  transcript: zod.z.string().optional(),
+  pdf: zod.z.string().optional(),
+  cuesheet: zod.z.string().optional(),
+  keynoteFile: zod.z.string().optional(),
+  url: zod.z.string().optional()
 });
-
-const RoleSchema = ThingSchema.extend({
-  from: zod.z.string(),
-  to: zod.z.string().or(ThingSchema),
-  startDate: zod.z.coerce.date().optional(),
-  endDate: zod.z.coerce.date().optional()
+const TalkSchema = CreativeWorkSchema.extend({
+  type: zod.z.string().default("Presentation"),
+  performances: zod.z.array(TalkEventSchema).optional(),
+  keySlide: zod.z.number().optional(),
+  slides: zod.z.array(SlideSchema).optional()
 });
 
 const ArticleSchema = CreativeWorkSchema.extend({
@@ -572,60 +572,66 @@ const MessageSchema = CreativeWorkSchema.extend({
   attachment: oneOrMany(zod.z.string()).optional()
 });
 
+const ProjectSchema = CreativeWorkSchema.extend({
+  type: zod.z.string().default("Project"),
+  usage: zod.z.number().optional(),
+  additionalType: zod.z.string().optional()
+});
+
 const SocialMediaPostingSchema = CreativeWorkSchema.extend({
   type: zod.z.string().default("SocialMediaPosting"),
   sharedContent: oneOrMany(urlSchema).optional()
 });
 
-const BookmarkSchema = CreativeWorkSchema.extend({
-  type: zod.z.string().default("Bookmark"),
-  sharedContent: urlSchema
+const EventSchema = ThingSchema.extend({
+  type: zod.z.string().default("Event"),
+  dates: recordWithHints(zod.z.coerce.date(), ["start", "end"]).optional(),
+  location: zod.z.string().optional(),
+  attendees: zod.z.coerce.number().optional(),
+  isPartOf: oneOrMany(zod.z.string()).optional(),
+  // none, one, or more string or string/order objects
+  hasPart: oneOrMany(zod.z.string()).optional()
+  // none, one, or more string or string/order objects
 });
 
-const DeviceSchema = ThingSchema.extend({
-  type: zod.z.string().default("HardwareDevice"),
-  dates: zod.z.record(zod.z.coerce.date()).optional(),
-  category: zod.z.string().optional(),
-  manufacturer: zod.z.string().optional(),
-  platform: zod.z.string().optional(),
-  model: zod.z.string().optional(),
-  cpu: zod.z.string().optional(),
-  cores: zod.z.coerce.number().optional(),
-  mhz: zod.z.string().optional(),
-  mips: zod.z.string().optional(),
-  ram: zod.z.string().optional(),
-  storage: zod.z.string().optional(),
-  screen: SizeSchema.optional(),
-  camera: SizeSchema.optional(),
-  multi: zod.z.coerce.number().optional(),
-  msrp: zod.z.string().optional(),
-  notes: zod.z.string().optional()
+const OrganizationSchema = ThingSchema.extend({
+  type: zod.z.string().default("Organization"),
+  dates: recordWithHints(zod.z.coerce.date(), [
+    "founding",
+    "dissolution"
+  ]).optional(),
+  places: zod.z.record(zod.z.string()).optional(),
+  memberOf: oneOrMany(zod.z.string()).optional()
+  // none, one, or more string or string/order objects
 });
 
-const SlideSchema = zod.z.object({
-  image: zod.z.string().optional(),
-  alt: zod.z.string().optional(),
-  text: zod.z.string().optional(),
-  isBonusSlide: zod.z.coerce.boolean().optional()
+const PersonSchema = ThingSchema.extend({
+  type: zod.z.string().default("Person"),
+  dates: recordWithHints(zod.z.coerce.date(), ["birth", "death"]).optional(),
+  places: zod.z.record(zod.z.string()).optional(),
+  knows: oneOrMany(zod.z.string()).optional(),
+  knowsAbout: oneOrMany(zod.z.string()).optional(),
+  isFictional: zod.z.boolean().optional(),
+  isPartOf: oneOrMany(zod.z.string()).optional().describe(
+    "For People, this includes organization membership, employment, etc."
+  ),
+  relation: zod.z.record(zod.z.string().or(zod.z.array(zod.z.string()))).optional()
+  // Either a single string, or a dictionary of strings or string arrays.
 });
-const TalkEventSchema = zod.z.object({
-  event: zod.z.string(),
-  date: zod.z.coerce.date().optional(),
-  withTitle: zod.z.string().optional(),
-  isCanonicalVersion: zod.z.coerce.boolean().optional(),
-  description: zod.z.string().optional(),
-  recording: urlSchema.optional(),
-  transcript: zod.z.string().optional(),
-  pdf: zod.z.string().optional(),
-  cuesheet: zod.z.string().optional(),
-  keynoteFile: zod.z.string().optional(),
-  url: zod.z.string().optional()
+
+const PlaceSchema = ThingSchema.extend({
+  type: zod.z.string().default("Place"),
+  isVirtual: zod.z.boolean().optional(),
+  latitude: zod.z.number().optional(),
+  longitude: zod.z.number().optional(),
+  population: zod.z.number().optional()
 });
-const TalkSchema = CreativeWorkSchema.extend({
-  type: zod.z.string().default("Presentation"),
-  performances: zod.z.array(TalkEventSchema).optional(),
-  keySlide: zod.z.number().optional(),
-  slides: zod.z.array(SlideSchema).optional()
+
+const RoleSchema = ThingSchema.extend({
+  from: zod.z.string(),
+  to: zod.z.string().or(ThingSchema),
+  startDate: zod.z.coerce.date().optional(),
+  endDate: zod.z.coerce.date().optional()
 });
 
 exports.ArticleSchema = ArticleSchema;
@@ -643,6 +649,7 @@ exports.OrganizationSchema = OrganizationSchema;
 exports.PartialBookSchema = PartialBookSchema;
 exports.PersonSchema = PersonSchema;
 exports.PlaceSchema = PlaceSchema;
+exports.ProjectSchema = ProjectSchema;
 exports.RoleSchema = RoleSchema;
 exports.SizeSchema = SizeSchema;
 exports.SlideSchema = SlideSchema;
