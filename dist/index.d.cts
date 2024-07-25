@@ -1,7 +1,6 @@
-import * as _eatonfyi_urls from '@eatonfyi/urls';
-import { ParsedUrl } from '@eatonfyi/urls';
 import * as url from 'url';
 import { z } from 'zod';
+import { ParsedUrl } from '@eatonfyi/urls';
 
 declare const idSeparator = ".";
 type SchemaRecord = {
@@ -74,7 +73,7 @@ declare function listCollections(): string[];
  */
 declare const BookmarkSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -93,10 +92,9 @@ declare const BookmarkSchema: z.ZodObject<{
     text: z.ZodOptional<z.ZodString>;
     commentCount: z.ZodOptional<z.ZodNumber>;
     type: z.ZodDefault<z.ZodString>;
-    sharedContent: z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -115,10 +113,9 @@ declare const BookmarkSchema: z.ZodObject<{
     text: z.ZodOptional<z.ZodString>;
     commentCount: z.ZodOptional<z.ZodNumber>;
     type: z.ZodDefault<z.ZodString>;
-    sharedContent: z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -137,13 +134,12 @@ declare const BookmarkSchema: z.ZodObject<{
     text: z.ZodOptional<z.ZodString>;
     commentCount: z.ZodOptional<z.ZodNumber>;
     type: z.ZodDefault<z.ZodString>;
-    sharedContent: z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>;
 }, z.ZodTypeAny, "passthrough">>;
 type Bookmark = z.infer<typeof BookmarkSchema>;
 
 declare const DeviceSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -241,7 +237,7 @@ declare const DeviceSchema: z.ZodObject<{
     notes: z.ZodOptional<z.ZodString>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -339,7 +335,7 @@ declare const DeviceSchema: z.ZodObject<{
     notes: z.ZodOptional<z.ZodString>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -461,7 +457,7 @@ declare const TalkEventSchema: z.ZodObject<{
     withTitle: z.ZodOptional<z.ZodString>;
     isCanonicalVersion: z.ZodOptional<z.ZodBoolean>;
     description: z.ZodOptional<z.ZodString>;
-    recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     transcript: z.ZodOptional<z.ZodString>;
     pdf: z.ZodOptional<z.ZodString>;
     cuesheet: z.ZodOptional<z.ZodString>;
@@ -473,7 +469,7 @@ declare const TalkEventSchema: z.ZodObject<{
     withTitle?: string | undefined;
     isCanonicalVersion?: boolean | undefined;
     description?: string | undefined;
-    recording?: _eatonfyi_urls.ParsedUrl | undefined;
+    recording?: string | undefined;
     transcript?: string | undefined;
     pdf?: string | undefined;
     cuesheet?: string | undefined;
@@ -495,7 +491,7 @@ declare const TalkEventSchema: z.ZodObject<{
 type TalkInstance = z.infer<typeof TalkEventSchema>;
 declare const TalkSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -520,7 +516,7 @@ declare const TalkSchema: z.ZodObject<{
         withTitle: z.ZodOptional<z.ZodString>;
         isCanonicalVersion: z.ZodOptional<z.ZodBoolean>;
         description: z.ZodOptional<z.ZodString>;
-        recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         transcript: z.ZodOptional<z.ZodString>;
         pdf: z.ZodOptional<z.ZodString>;
         cuesheet: z.ZodOptional<z.ZodString>;
@@ -532,7 +528,7 @@ declare const TalkSchema: z.ZodObject<{
         withTitle?: string | undefined;
         isCanonicalVersion?: boolean | undefined;
         description?: string | undefined;
-        recording?: _eatonfyi_urls.ParsedUrl | undefined;
+        recording?: string | undefined;
         transcript?: string | undefined;
         pdf?: string | undefined;
         cuesheet?: string | undefined;
@@ -570,7 +566,7 @@ declare const TalkSchema: z.ZodObject<{
     }>, "many">>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -595,7 +591,7 @@ declare const TalkSchema: z.ZodObject<{
         withTitle: z.ZodOptional<z.ZodString>;
         isCanonicalVersion: z.ZodOptional<z.ZodBoolean>;
         description: z.ZodOptional<z.ZodString>;
-        recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         transcript: z.ZodOptional<z.ZodString>;
         pdf: z.ZodOptional<z.ZodString>;
         cuesheet: z.ZodOptional<z.ZodString>;
@@ -607,7 +603,7 @@ declare const TalkSchema: z.ZodObject<{
         withTitle?: string | undefined;
         isCanonicalVersion?: boolean | undefined;
         description?: string | undefined;
-        recording?: _eatonfyi_urls.ParsedUrl | undefined;
+        recording?: string | undefined;
         transcript?: string | undefined;
         pdf?: string | undefined;
         cuesheet?: string | undefined;
@@ -645,7 +641,7 @@ declare const TalkSchema: z.ZodObject<{
     }>, "many">>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -670,7 +666,7 @@ declare const TalkSchema: z.ZodObject<{
         withTitle: z.ZodOptional<z.ZodString>;
         isCanonicalVersion: z.ZodOptional<z.ZodBoolean>;
         description: z.ZodOptional<z.ZodString>;
-        recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        recording: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         transcript: z.ZodOptional<z.ZodString>;
         pdf: z.ZodOptional<z.ZodString>;
         cuesheet: z.ZodOptional<z.ZodString>;
@@ -682,7 +678,7 @@ declare const TalkSchema: z.ZodObject<{
         withTitle?: string | undefined;
         isCanonicalVersion?: boolean | undefined;
         description?: string | undefined;
-        recording?: _eatonfyi_urls.ParsedUrl | undefined;
+        recording?: string | undefined;
         transcript?: string | undefined;
         pdf?: string | undefined;
         cuesheet?: string | undefined;
@@ -819,7 +815,7 @@ declare const urlStringSchema: z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.Zod
 
 declare const CreativeWorkSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -840,7 +836,7 @@ declare const CreativeWorkSchema: z.ZodObject<{
     commentCount: z.ZodOptional<z.ZodNumber>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -861,7 +857,7 @@ declare const CreativeWorkSchema: z.ZodObject<{
     commentCount: z.ZodOptional<z.ZodNumber>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -886,7 +882,7 @@ type CreativeWorkInput = typeof CreativeWorkSchema._input;
 
 declare const ArticleSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -909,7 +905,7 @@ declare const ArticleSchema: z.ZodObject<{
     pagination: z.ZodOptional<z.ZodString>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -932,7 +928,7 @@ declare const ArticleSchema: z.ZodObject<{
     pagination: z.ZodOptional<z.ZodString>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -958,7 +954,7 @@ type Article = z.infer<typeof ArticleSchema>;
 
 declare const BookSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1026,7 +1022,7 @@ declare const BookSchema: z.ZodObject<{
     }>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1094,7 +1090,7 @@ declare const BookSchema: z.ZodObject<{
     }>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1164,7 +1160,7 @@ declare const BookSchema: z.ZodObject<{
 type Book = z.infer<typeof BookSchema>;
 declare const PartialBookSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-    url: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>>;
+    url: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>>;
     date: z.ZodOptional<z.ZodOptional<z.ZodDate>>;
     id: z.ZodOptional<z.ZodString>;
     alternateName: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
@@ -1232,7 +1228,7 @@ declare const PartialBookSchema: z.ZodObject<{
     }>>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-    url: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>>;
+    url: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>>;
     date: z.ZodOptional<z.ZodOptional<z.ZodDate>>;
     id: z.ZodOptional<z.ZodString>;
     alternateName: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
@@ -1300,7 +1296,7 @@ declare const PartialBookSchema: z.ZodObject<{
     }>>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-    url: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>>;
+    url: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>>;
     date: z.ZodOptional<z.ZodOptional<z.ZodDate>>;
     id: z.ZodOptional<z.ZodString>;
     alternateName: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
@@ -1384,7 +1380,7 @@ declare const CommentAuthorSchema: z.ZodObject<{
 }>;
 declare const CommentSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1420,7 +1416,7 @@ declare const CommentSchema: z.ZodObject<{
     }>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1456,7 +1452,7 @@ declare const CommentSchema: z.ZodObject<{
     }>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1497,7 +1493,7 @@ type CommentInput = typeof CommentSchema._input;
 
 declare const EpisodeSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1521,7 +1517,7 @@ declare const EpisodeSchema: z.ZodObject<{
     musicBy: z.ZodOptional<z.ZodString>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1545,7 +1541,7 @@ declare const EpisodeSchema: z.ZodObject<{
     musicBy: z.ZodOptional<z.ZodString>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1572,7 +1568,7 @@ type Episode = z.infer<typeof EpisodeSchema>;
 
 declare const MessageSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1600,7 +1596,7 @@ declare const MessageSchema: z.ZodObject<{
     attachment: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1628,7 +1624,7 @@ declare const MessageSchema: z.ZodObject<{
     attachment: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1659,7 +1655,7 @@ type Message = z.infer<typeof MessageSchema>;
 
 declare const ProjectSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1682,7 +1678,7 @@ declare const ProjectSchema: z.ZodObject<{
     additionalType: z.ZodOptional<z.ZodString>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1705,7 +1701,7 @@ declare const ProjectSchema: z.ZodObject<{
     additionalType: z.ZodOptional<z.ZodString>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1731,7 +1727,7 @@ type Project = z.infer<typeof ProjectSchema>;
 
 declare const SocialMediaPostingSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1750,10 +1746,10 @@ declare const SocialMediaPostingSchema: z.ZodObject<{
     text: z.ZodOptional<z.ZodString>;
     commentCount: z.ZodOptional<z.ZodNumber>;
     type: z.ZodDefault<z.ZodString>;
-    sharedContent: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>, z.ZodArray<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>, "many">]>, _eatonfyi_urls.ParsedUrl | (_eatonfyi_urls.ParsedUrl | undefined)[] | (_eatonfyi_urls.ParsedUrl & any[]) | ((_eatonfyi_urls.ParsedUrl | undefined)[] & any[]) | (_eatonfyi_urls.ParsedUrl | (_eatonfyi_urls.ParsedUrl | undefined)[] | undefined)[] | undefined, string | url.URL | (string | url.URL)[]>>;
+    sharedContent: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>, z.ZodArray<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | url.URL | (string | url.URL)[]>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1772,10 +1768,10 @@ declare const SocialMediaPostingSchema: z.ZodObject<{
     text: z.ZodOptional<z.ZodString>;
     commentCount: z.ZodOptional<z.ZodNumber>;
     type: z.ZodDefault<z.ZodString>;
-    sharedContent: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>, z.ZodArray<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>, "many">]>, _eatonfyi_urls.ParsedUrl | (_eatonfyi_urls.ParsedUrl | undefined)[] | (_eatonfyi_urls.ParsedUrl & any[]) | ((_eatonfyi_urls.ParsedUrl | undefined)[] & any[]) | (_eatonfyi_urls.ParsedUrl | (_eatonfyi_urls.ParsedUrl | undefined)[] | undefined)[] | undefined, string | url.URL | (string | url.URL)[]>>;
+    sharedContent: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>, z.ZodArray<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | url.URL | (string | url.URL)[]>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     date: z.ZodOptional<z.ZodDate>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -1794,13 +1790,13 @@ declare const SocialMediaPostingSchema: z.ZodObject<{
     text: z.ZodOptional<z.ZodString>;
     commentCount: z.ZodOptional<z.ZodNumber>;
     type: z.ZodDefault<z.ZodString>;
-    sharedContent: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>, z.ZodArray<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>, "many">]>, _eatonfyi_urls.ParsedUrl | (_eatonfyi_urls.ParsedUrl | undefined)[] | (_eatonfyi_urls.ParsedUrl & any[]) | ((_eatonfyi_urls.ParsedUrl | undefined)[] & any[]) | (_eatonfyi_urls.ParsedUrl | (_eatonfyi_urls.ParsedUrl | undefined)[] | undefined)[] | undefined, string | url.URL | (string | url.URL)[]>>;
+    sharedContent: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>, z.ZodArray<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | url.URL | (string | url.URL)[]>>;
 }, z.ZodTypeAny, "passthrough">>;
 type SocialMediaPosting = z.infer<typeof SocialMediaPostingSchema>;
 
 declare const EventSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1821,7 +1817,7 @@ declare const EventSchema: z.ZodObject<{
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1842,7 +1838,7 @@ declare const EventSchema: z.ZodObject<{
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1866,7 +1862,7 @@ type Event = z.infer<typeof EventSchema>;
 
 declare const OrganizationSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1887,7 +1883,7 @@ declare const OrganizationSchema: z.ZodObject<{
     memberOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1908,7 +1904,7 @@ declare const OrganizationSchema: z.ZodObject<{
     memberOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1932,7 +1928,7 @@ type Organization = z.infer<typeof OrganizationSchema>;
 
 declare const PersonSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1956,7 +1952,7 @@ declare const PersonSchema: z.ZodObject<{
     relation: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -1980,7 +1976,7 @@ declare const PersonSchema: z.ZodObject<{
     relation: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -2007,7 +2003,7 @@ type Person = z.infer<typeof PersonSchema>;
 
 declare const PlaceSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -2023,7 +2019,7 @@ declare const PlaceSchema: z.ZodObject<{
     population: z.ZodOptional<z.ZodNumber>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -2039,7 +2035,7 @@ declare const PlaceSchema: z.ZodObject<{
     population: z.ZodOptional<z.ZodNumber>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -2059,7 +2055,7 @@ type Place = z.infer<typeof PlaceSchema>;
 declare const RoleSchema: z.ZodObject<{
     type: z.ZodDefault<z.ZodString>;
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -2076,7 +2072,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2088,7 +2084,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2100,7 +2096,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2111,7 +2107,7 @@ declare const RoleSchema: z.ZodObject<{
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     type: z.ZodDefault<z.ZodString>;
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -2128,7 +2124,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2140,7 +2136,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2152,7 +2148,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2163,7 +2159,7 @@ declare const RoleSchema: z.ZodObject<{
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     type: z.ZodDefault<z.ZodString>;
     name: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     id: z.ZodString;
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
@@ -2180,7 +2176,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2192,7 +2188,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2204,7 +2200,7 @@ declare const RoleSchema: z.ZodObject<{
         alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         description: z.ZodOptional<z.ZodString>;
         image: z.ZodOptional<z.ZodString>;
-        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+        url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2222,7 +2218,7 @@ declare const ThingSchema: z.ZodObject<{
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2234,7 +2230,7 @@ declare const ThingSchema: z.ZodObject<{
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
@@ -2246,7 +2242,7 @@ declare const ThingSchema: z.ZodObject<{
     alternateName: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
-    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, _eatonfyi_urls.ParsedUrl | undefined, string | url.URL>>;
+    url: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodType<url.URL, z.ZodTypeDef, url.URL>, z.ZodString]>, string, string | url.URL>>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;

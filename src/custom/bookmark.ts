@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { urlSchema } from '../fragments/index.js';
 import { CreativeWorkSchema } from '../schema-org/creative-work.js';
 
 /**
@@ -16,7 +15,6 @@ import { CreativeWorkSchema } from '../schema-org/creative-work.js';
  */
 export const BookmarkSchema = CreativeWorkSchema.extend({
   type: z.string().default('Bookmark'),
-  sharedContent: urlSchema,
 });
 
 export type Bookmark = z.infer<typeof BookmarkSchema>;

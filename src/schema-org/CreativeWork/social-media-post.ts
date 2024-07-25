@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { oneOrMany, urlSchema } from '../../fragments/index.js';
+import { oneOrMany, urlStringSchema } from '../../fragments/index.js';
 import { CreativeWorkSchema } from '../creative-work.js';
 
 export const SocialMediaPostingSchema = CreativeWorkSchema.extend({
   type: z.string().default('SocialMediaPosting'),
-  sharedContent: oneOrMany(urlSchema).optional(),
+  sharedContent: oneOrMany(urlStringSchema).optional(),
 });
 
 export type SocialMediaPosting = z.infer<typeof SocialMediaPostingSchema>;

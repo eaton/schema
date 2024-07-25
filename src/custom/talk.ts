@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { urlSchema } from '../fragments/index.js';
+import { urlStringSchema } from '../fragments/index.js';
 import { CreativeWorkSchema } from '../schema-org/creative-work.js';
 
 export const SlideSchema = z.object({
@@ -16,7 +16,7 @@ export const TalkEventSchema = z.object({
   withTitle: z.string().optional(),
   isCanonicalVersion: z.coerce.boolean().optional(),
   description: z.string().optional(),
-  recording: urlSchema.optional(),
+  recording: urlStringSchema.optional(),
   transcript: z.string().optional(),
   pdf: z.string().optional(),
   cuesheet: z.string().optional(),

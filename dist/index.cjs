@@ -436,7 +436,7 @@ const ThingSchema = zod.z.object({
   alternateName: oneOrMany(zod.z.string()).optional(),
   description: zod.z.string().optional(),
   image: zod.z.string().optional(),
-  url: urlSchema.optional(),
+  url: urlStringSchema.optional(),
   keywords: zod.z.array(zod.z.string()).optional(),
   isPartOf: oneOrMany(zod.z.string()).optional(),
   // none, one, or more string or string/order objects
@@ -466,8 +466,7 @@ const CreativeWorkSchema = ThingSchema.extend({
 });
 
 const BookmarkSchema = CreativeWorkSchema.extend({
-  type: zod.z.string().default("Bookmark"),
-  sharedContent: urlSchema
+  type: zod.z.string().default("Bookmark")
 });
 
 const DeviceSchema = ThingSchema.extend({
@@ -502,7 +501,7 @@ const TalkEventSchema = zod.z.object({
   withTitle: zod.z.string().optional(),
   isCanonicalVersion: zod.z.coerce.boolean().optional(),
   description: zod.z.string().optional(),
-  recording: urlSchema.optional(),
+  recording: urlStringSchema.optional(),
   transcript: zod.z.string().optional(),
   pdf: zod.z.string().optional(),
   cuesheet: zod.z.string().optional(),
@@ -580,7 +579,7 @@ const ProjectSchema = CreativeWorkSchema.extend({
 
 const SocialMediaPostingSchema = CreativeWorkSchema.extend({
   type: zod.z.string().default("SocialMediaPosting"),
-  sharedContent: oneOrMany(urlSchema).optional()
+  sharedContent: oneOrMany(urlStringSchema).optional()
 });
 
 const EventSchema = ThingSchema.extend({

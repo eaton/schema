@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { idSchema, oneOrMany, urlSchema } from '../fragments/index.js';
+import { idSchema, oneOrMany, urlStringSchema } from '../fragments/index.js';
 
 export const ThingSchema = z
   .object({
@@ -9,7 +9,7 @@ export const ThingSchema = z
     alternateName: oneOrMany(z.string()).optional(),
     description: z.string().optional(),
     image: z.string().optional(),
-    url: urlSchema.optional(),
+    url: urlStringSchema.optional(),
     keywords: z.array(z.string()).optional(),
     isPartOf: oneOrMany(z.string()).optional(), // none, one, or more string or string/order objects
     hasPart: oneOrMany(z.string()).optional(), // none, one, or more string or string/order objects
