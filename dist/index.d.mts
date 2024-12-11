@@ -82,11 +82,11 @@ declare const BookmarkSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -103,11 +103,11 @@ declare const BookmarkSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -124,11 +124,11 @@ declare const BookmarkSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -147,7 +147,7 @@ declare const DeviceSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     category: z.ZodOptional<z.ZodString>;
@@ -245,7 +245,7 @@ declare const DeviceSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     category: z.ZodOptional<z.ZodString>;
@@ -343,7 +343,7 @@ declare const DeviceSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     category: z.ZodOptional<z.ZodString>;
@@ -500,11 +500,11 @@ declare const TalkSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -575,11 +575,11 @@ declare const TalkSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -650,11 +650,11 @@ declare const TalkSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -821,7 +821,7 @@ declare const CreativeWorkSchema: z.ZodObject<{
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     date: z.ZodOptional<z.ZodDate>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
@@ -842,7 +842,7 @@ declare const CreativeWorkSchema: z.ZodObject<{
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     date: z.ZodOptional<z.ZodDate>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
@@ -863,7 +863,7 @@ declare const CreativeWorkSchema: z.ZodObject<{
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     date: z.ZodOptional<z.ZodDate>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
@@ -891,11 +891,11 @@ declare const ArticleSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -914,11 +914,11 @@ declare const ArticleSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -937,11 +937,11 @@ declare const ArticleSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -963,11 +963,11 @@ declare const BookSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1031,11 +1031,11 @@ declare const BookSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1099,11 +1099,11 @@ declare const BookSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1169,11 +1169,11 @@ declare const PartialBookSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
     isPartOf: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
     hasPart: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
-    isMine: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+    about: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
+    me: z.ZodOptional<z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>>;
     dates: z.ZodOptional<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>>;
     headline: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     creator: z.ZodOptional<z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>>;
-    about: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
     publisher: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     archivedAt: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     text: z.ZodOptional<z.ZodOptional<z.ZodString>>;
@@ -1237,11 +1237,11 @@ declare const PartialBookSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
     isPartOf: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
     hasPart: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
-    isMine: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+    about: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
+    me: z.ZodOptional<z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>>;
     dates: z.ZodOptional<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>>;
     headline: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     creator: z.ZodOptional<z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>>;
-    about: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
     publisher: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     archivedAt: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     text: z.ZodOptional<z.ZodOptional<z.ZodString>>;
@@ -1305,11 +1305,11 @@ declare const PartialBookSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
     isPartOf: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
     hasPart: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
-    isMine: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+    about: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
+    me: z.ZodOptional<z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>>;
     dates: z.ZodOptional<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>>;
     headline: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     creator: z.ZodOptional<z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>>;
-    about: z.ZodOptional<z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>>;
     publisher: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     archivedAt: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     text: z.ZodOptional<z.ZodOptional<z.ZodString>>;
@@ -1389,11 +1389,11 @@ declare const CommentSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1425,11 +1425,11 @@ declare const CommentSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1461,11 +1461,11 @@ declare const CommentSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1502,11 +1502,11 @@ declare const EpisodeSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1526,11 +1526,11 @@ declare const EpisodeSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1550,11 +1550,11 @@ declare const EpisodeSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1577,11 +1577,11 @@ declare const MessageSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1605,11 +1605,11 @@ declare const MessageSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1633,11 +1633,11 @@ declare const MessageSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1664,11 +1664,11 @@ declare const ProjectSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1687,11 +1687,11 @@ declare const ProjectSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1710,11 +1710,11 @@ declare const ProjectSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1736,11 +1736,11 @@ declare const SocialMediaPostingSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1758,11 +1758,11 @@ declare const SocialMediaPostingSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1780,11 +1780,11 @@ declare const SocialMediaPostingSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>>;
     headline: z.ZodOptional<z.ZodString>;
     creator: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>>]>>;
-    about: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     publisher: z.ZodOptional<z.ZodString>;
     archivedAt: z.ZodOptional<z.ZodString>;
     text: z.ZodOptional<z.ZodString>;
@@ -1802,7 +1802,7 @@ declare const EventSchema: z.ZodObject<{
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1823,7 +1823,7 @@ declare const EventSchema: z.ZodObject<{
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1844,7 +1844,7 @@ declare const EventSchema: z.ZodObject<{
     description: z.ZodOptional<z.ZodString>;
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1870,7 +1870,7 @@ declare const OrganizationSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1891,7 +1891,7 @@ declare const OrganizationSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1912,7 +1912,7 @@ declare const OrganizationSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1935,7 +1935,7 @@ declare const PersonSchema: z.ZodObject<{
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1959,7 +1959,7 @@ declare const PersonSchema: z.ZodObject<{
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -1983,7 +1983,7 @@ declare const PersonSchema: z.ZodObject<{
     image: z.ZodOptional<z.ZodString>;
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     dates: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodDate>> | z.ZodOptional<z.ZodIntersection<z.ZodRecord<z.ZodString, z.ZodDate>, z.ZodObject<{
         [k: string]: z.ZodOptional<z.ZodDate>;
@@ -2011,7 +2011,7 @@ declare const PlaceSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     isVirtual: z.ZodOptional<z.ZodBoolean>;
     latitude: z.ZodOptional<z.ZodNumber>;
@@ -2027,7 +2027,7 @@ declare const PlaceSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     isVirtual: z.ZodOptional<z.ZodBoolean>;
     latitude: z.ZodOptional<z.ZodNumber>;
@@ -2043,7 +2043,7 @@ declare const PlaceSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     type: z.ZodDefault<z.ZodString>;
     isVirtual: z.ZodOptional<z.ZodBoolean>;
     latitude: z.ZodOptional<z.ZodNumber>;
@@ -2063,7 +2063,7 @@ declare const RoleSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     from: z.ZodString;
     to: z.ZodUnion<[z.ZodString, z.ZodObject<{
         id: z.ZodString;
@@ -2076,7 +2076,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
         id: z.ZodString;
         type: z.ZodDefault<z.ZodString>;
@@ -2088,7 +2088,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
         id: z.ZodString;
         type: z.ZodDefault<z.ZodString>;
@@ -2100,7 +2100,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, z.ZodTypeAny, "passthrough">>]>;
     startDate: z.ZodOptional<z.ZodDate>;
     endDate: z.ZodOptional<z.ZodDate>;
@@ -2115,7 +2115,7 @@ declare const RoleSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     from: z.ZodString;
     to: z.ZodUnion<[z.ZodString, z.ZodObject<{
         id: z.ZodString;
@@ -2128,7 +2128,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
         id: z.ZodString;
         type: z.ZodDefault<z.ZodString>;
@@ -2140,7 +2140,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
         id: z.ZodString;
         type: z.ZodDefault<z.ZodString>;
@@ -2152,7 +2152,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, z.ZodTypeAny, "passthrough">>]>;
     startDate: z.ZodOptional<z.ZodDate>;
     endDate: z.ZodOptional<z.ZodDate>;
@@ -2167,7 +2167,7 @@ declare const RoleSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     from: z.ZodString;
     to: z.ZodUnion<[z.ZodString, z.ZodObject<{
         id: z.ZodString;
@@ -2180,7 +2180,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
         id: z.ZodString;
         type: z.ZodDefault<z.ZodString>;
@@ -2192,7 +2192,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
         id: z.ZodString;
         type: z.ZodDefault<z.ZodString>;
@@ -2204,7 +2204,7 @@ declare const RoleSchema: z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
         isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
         hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-        isMine: z.ZodOptional<z.ZodBoolean>;
+        me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
     }, z.ZodTypeAny, "passthrough">>]>;
     startDate: z.ZodOptional<z.ZodDate>;
     endDate: z.ZodOptional<z.ZodDate>;
@@ -2222,7 +2222,7 @@ declare const ThingSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
 }, "passthrough", z.ZodTypeAny, z.objectOutputType<{
     id: z.ZodString;
     type: z.ZodDefault<z.ZodString>;
@@ -2234,7 +2234,7 @@ declare const ThingSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
 }, z.ZodTypeAny, "passthrough">, z.objectInputType<{
     id: z.ZodString;
     type: z.ZodDefault<z.ZodString>;
@@ -2246,7 +2246,7 @@ declare const ThingSchema: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     isPartOf: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
     hasPart: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodString, "many">]>, string | string[] | ((string | string[]) & any[]) | (string | string[])[], string | string[]>>;
-    isMine: z.ZodOptional<z.ZodBoolean>;
+    me: z.ZodOptional<z.ZodEnum<["by", "about", "with", "via"]>>;
 }, z.ZodTypeAny, "passthrough">>;
 type Thing = z.infer<typeof ThingSchema>;
 

@@ -13,8 +13,8 @@ export const ThingSchema = z
     keywords: z.array(z.string()).optional(),
     isPartOf: oneOrMany(z.string()).optional(), // none, one, or more string or string/order objects
     hasPart: oneOrMany(z.string()).optional(), // none, one, or more string or string/order objects
-    isMine: z.coerce
-      .boolean()
+    me: z
+      .enum(['by', 'about', 'with', 'via'])
       .optional()
       .describe(
         'Nonstandard flag to quickly indicate that an entitiy is canonically owned/created by me. Simpler than jamming myself in the creator field of everything.',

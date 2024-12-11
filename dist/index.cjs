@@ -36,100 +36,100 @@ function schemas() {
       name: "CreativeWork",
       parent: "Thing",
       type: "work",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "Article",
       parent: "CreativeWork",
       type: "article",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "SocialMediaPosting",
       parent: "Article",
       type: "post",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "SocialMediaThread",
       parent: "SocialMediaPosting",
       type: "thread",
-      collection: "works",
+      collection: "things",
       isCustom: true
     },
     {
       name: "Bookmark",
       parent: "SocialMediaPosting",
       type: "link",
-      collection: "works",
+      collection: "things",
       isCustom: true
     },
     { name: "BlogPosting", parent: "SocialMediaPosting" },
     { name: "LiveBlogPosting", parent: "BlogPosting" },
     { name: "DiscussionForumPosting", parent: "SocialMediaPosting" },
-    { name: "Blog", parent: "CreativeWork", type: "blog", collection: "works" },
+    { name: "Blog", parent: "CreativeWork", type: "blog", collection: "things" },
     {
       name: "Book",
       parent: "CreativeWork",
       type: "book",
-      collection: "products"
+      collection: "things"
     },
     { name: "Clip", parent: "CreativeWork", type: "clip" },
     {
       name: "Collection",
       parent: "CreativeWork",
       type: "collection",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "Comment",
       parent: "CreativeWork",
       type: "comment",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "Conversation",
       parent: "CreativeWork",
       type: "chat",
-      collection: "works"
+      collection: "things"
     },
     { name: "Series", aliasOf: "CreativeWorkSeries" },
     {
       name: "CreativeWorkSeries",
       parent: "CreativeWork",
       type: "series",
-      collection: "works"
+      collection: "things"
     },
     { name: "VideoGameSeries", parent: "CreativeWorkSeries" },
     {
       name: "Periodical",
       parent: "CreativeWorkSeries",
       type: "magazine",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "PodcastSeries",
       parent: "CreativeWorkSeries",
       type: "podcast",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "TVSeries",
       parent: "CreativeWorkSeries",
       type: "show",
-      collection: "works"
+      collection: "things"
     },
     {
       name: "DefinedTermSet",
       parent: "CreativeWork",
       type: "taxonomy",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "Episode",
       parent: "CreativeWork",
       type: "episode",
-      collection: "works"
+      collection: "thing"
     },
     { name: "PodcastEpisode", parent: "Episode" },
     { name: "TVEpisode", parent: "Episode" },
@@ -137,16 +137,16 @@ function schemas() {
       name: "Game",
       parent: "CreativeWork",
       type: "game",
-      collection: "products"
+      collection: "things"
     },
     { name: "VideoGame", parent: "Game" },
     { name: "HowTo", parent: "CreativeWork" },
-    { name: "Recipe", parent: "HowTo", type: "recipe", collection: "works" },
+    { name: "Recipe", parent: "HowTo", type: "recipe", collection: "thing" },
     {
       name: "JournalEntry",
       parent: "CreativeWork",
       type: "journal",
-      collection: "works",
+      collection: "thing",
       isCustom: true
     },
     {
@@ -162,147 +162,152 @@ function schemas() {
       name: "Message",
       parent: "CreativeWork",
       type: "message",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "EmailMessage",
       parent: "Message",
       type: "email",
-      collection: "email"
+      collection: "things"
     },
     {
       name: "Movie",
       parent: "CreativeWork",
       type: "movie",
-      collection: "products"
+      collection: "things"
     },
     {
       name: "MusicPlaylist",
       parent: "CreativeWork",
       type: "playlist",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "MusicAlbum",
       parent: "MusicPlaylist",
       type: "album",
-      collection: "products"
+      collection: "things"
     },
     {
       name: "MusicRecording",
       parent: "CreativeWork",
       type: "song",
-      collection: "products"
+      collection: "things"
     },
     {
       name: "Photograph",
       parent: "CreativeWork",
       type: "photo",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "Play",
       parent: "CreativeWork",
       type: "play",
-      collection: "products"
+      collection: "things"
     },
     {
       name: "Presentation",
       parent: "CreativeWork",
       type: "talk",
-      collection: "works",
+      collection: "thing",
       isCustom: true
     },
     {
       name: "Project",
       parent: "CreativeWork",
       type: "project",
-      collection: "works",
+      collection: "thing",
       isCustom: true
     },
     {
       name: "PublicationIssue",
       parent: "CreativeWork",
       type: "issue",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "Quotation",
       parent: "CreativeWork",
       type: "quote",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "Review",
       parent: "CreativeWork",
       type: "review",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "ShortStory",
       parent: "CreativeWork",
       type: "story",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "SoftwareApplication",
       parent: "CreativeWork",
       type: "app",
-      collection: "products"
+      collection: "things"
     },
     {
       name: "WebApplication",
       parent: "SoftwareApplication",
       type: "webapp",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "SoftwareSourceCode",
       parent: "CreativeWork",
       type: "code",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "VisualArtwork",
       parent: "CreativeWork",
       type: "art",
-      collection: "works"
+      collection: "thing"
     },
     {
       name: "WebSite",
       parent: "CreativeWork",
       type: "site",
-      collection: "works"
+      collection: "thing"
     },
     { name: "Event", parent: "Thing", type: "event", collection: "events" },
     {
       name: "EventSeries",
       parent: "Event",
       type: "events",
-      collection: "events"
+      collection: "things"
     },
     {
       name: "Engagement",
       parent: "Event",
       type: "engagement",
-      collection: "events",
+      collection: "things",
       isCustom: true
     },
     {
       name: "PresentationEvent",
       parent: "Event",
       type: "performance",
-      collection: "events",
+      collection: "things",
       isCustom: true
     },
     { name: "DefinedTerm", parent: "Thing", type: "term", collection: "terms" },
-    { name: "Role", parent: "Thing", type: "role", collection: "things" },
+    {
+      name: "Role",
+      parent: "Thing",
+      type: "role",
+      collection: "relationships"
+    },
     { name: "OrganizationRole", parent: "Role" },
     {
       name: "EmployeeRole",
       parent: "OrganizationRole",
       type: "job",
-      collection: "things"
+      collection: "relationships"
     },
     {
       name: "Organization",
@@ -317,13 +322,13 @@ function schemas() {
       name: "Product",
       parent: "Thing",
       type: "product",
-      collection: "products"
+      collection: "things"
     },
     {
       name: "HardwareDevice",
       parent: "Product",
       type: "device",
-      collection: "products",
+      collection: "things",
       isCustom: true
     }
   ];
@@ -442,7 +447,7 @@ const ThingSchema = zod.z.object({
   // none, one, or more string or string/order objects
   hasPart: oneOrMany(zod.z.string()).optional(),
   // none, one, or more string or string/order objects
-  isMine: zod.z.coerce.boolean().optional().describe(
+  me: zod.z.enum(["by", "about", "with", "via"]).optional().describe(
     "Nonstandard flag to quickly indicate that an entitiy is canonically owned/created by me. Simpler than jamming myself in the creator field of everything."
   )
 }).passthrough();
