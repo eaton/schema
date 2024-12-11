@@ -123,13 +123,13 @@ function schemas() {
       name: "DefinedTermSet",
       parent: "CreativeWork",
       type: "taxonomy",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "Episode",
       parent: "CreativeWork",
       type: "episode",
-      collection: "thing"
+      collection: "things"
     },
     { name: "PodcastEpisode", parent: "Episode" },
     { name: "TVEpisode", parent: "Episode" },
@@ -146,7 +146,7 @@ function schemas() {
       name: "JournalEntry",
       parent: "CreativeWork",
       type: "journal",
-      collection: "thing",
+      collection: "things",
       isCustom: true
     },
     {
@@ -162,7 +162,7 @@ function schemas() {
       name: "Message",
       parent: "CreativeWork",
       type: "message",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "EmailMessage",
@@ -180,7 +180,7 @@ function schemas() {
       name: "MusicPlaylist",
       parent: "CreativeWork",
       type: "playlist",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "MusicAlbum",
@@ -198,7 +198,7 @@ function schemas() {
       name: "Photograph",
       parent: "CreativeWork",
       type: "photo",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "Play",
@@ -210,39 +210,39 @@ function schemas() {
       name: "Presentation",
       parent: "CreativeWork",
       type: "talk",
-      collection: "thing",
+      collection: "things",
       isCustom: true
     },
     {
       name: "Project",
       parent: "CreativeWork",
       type: "project",
-      collection: "thing",
+      collection: "things",
       isCustom: true
     },
     {
       name: "PublicationIssue",
       parent: "CreativeWork",
       type: "issue",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "Quotation",
       parent: "CreativeWork",
       type: "quote",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "Review",
       parent: "CreativeWork",
       type: "review",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "ShortStory",
       parent: "CreativeWork",
       type: "story",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "SoftwareApplication",
@@ -254,27 +254,27 @@ function schemas() {
       name: "WebApplication",
       parent: "SoftwareApplication",
       type: "webapp",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "SoftwareSourceCode",
       parent: "CreativeWork",
       type: "code",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "VisualArtwork",
       parent: "CreativeWork",
       type: "art",
-      collection: "thing"
+      collection: "things"
     },
     {
       name: "WebSite",
       parent: "CreativeWork",
       type: "site",
-      collection: "thing"
+      collection: "things"
     },
-    { name: "Event", parent: "Thing", type: "event", collection: "events" },
+    { name: "Event", parent: "Thing", type: "event", collection: "things" },
     {
       name: "EventSeries",
       parent: "Event",
@@ -295,19 +295,19 @@ function schemas() {
       collection: "things",
       isCustom: true
     },
-    { name: "DefinedTerm", parent: "Thing", type: "term", collection: "terms" },
+    { name: "DefinedTerm", parent: "Thing", type: "term", collection: "things" },
     {
       name: "Role",
       parent: "Thing",
       type: "role",
-      collection: "relationships"
+      collection: "relations"
     },
     { name: "OrganizationRole", parent: "Role" },
     {
       name: "EmployeeRole",
       parent: "OrganizationRole",
       type: "job",
-      collection: "relationships"
+      collection: "relations"
     },
     {
       name: "Organization",

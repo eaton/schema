@@ -347,19 +347,19 @@ export function schemas(): SchemaRecord[] {
       collection: 'things',
       isCustom: true,
     },
-    { name: 'DefinedTerm', parent: 'Thing', type: 'term', collection: 'terms' },
+    { name: 'DefinedTerm', parent: 'Thing', type: 'term', collection: 'things' },
     {
       name: 'Role',
       parent: 'Thing',
       type: 'role',
-      collection: 'relationships',
+      collection: 'relations',
     },
     { name: 'OrganizationRole', parent: 'Role' },
     {
       name: 'EmployeeRole',
       parent: 'OrganizationRole',
       type: 'job',
-      collection: 'relationships',
+      collection: 'relations',
     },
     {
       name: 'Organization',
