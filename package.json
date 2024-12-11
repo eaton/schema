@@ -1,6 +1,6 @@
 {
   "name": "@eatonfyi/schema",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Personal blog/archive schema, heavily inspired by Schema.org.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -54,6 +54,7 @@
     "typescript-eslint": "^7.9.0"
   },
   "dependencies": {
+    "@eatonfyi/schema": "github:eaton/schema",
     "@eatonfyi/ids": "github:eaton/ids",
     "@eatonfyi/urls": "github:eaton/urls",
     "zod": "^3.22.4"
