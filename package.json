@@ -1,6 +1,6 @@
 {
   "name": "@eatonfyi/schema",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Personal blog/archive schema, heavily inspired by Schema.org.",
   "type": "module",
   "main": "./dist/index.cjs",
