@@ -193,7 +193,7 @@ export function schemas(): SchemaRecord[] {
     },
     { name: 'VideoGame', parent: 'Game' },
     { name: 'HowTo', parent: 'CreativeWork' },
-    { name: 'Recipe', parent: 'HowTo', type: 'recipe', collection: 'thing' },
+    { name: 'Recipe', parent: 'HowTo', type: 'recipe', collection: 'things' },
     {
       name: 'JournalEntry',
       parent: 'CreativeWork',
